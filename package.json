@@ -1,0 +1,26 @@
+{
+  "name": "styleguide-express",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "config": {
+    "accessToken": "2d99eaea9ddc9b833b8388f677389bb078d2fbdc2da89712f365123081e791e7",
+    "space": "kva0nyzen4yv"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.2",
+    "contentful": "^3.8.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.14.0",
+    "hbs": "~4.0.1",
+    "morgan": "~1.7.0",
+    "node-sass-middleware": "0.9.8",
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "node-sass-middleware": "^0.9.8"
+  }
+}
