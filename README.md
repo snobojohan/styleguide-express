@@ -7,7 +7,7 @@ npm install
 ```
 then to run
 ```
-DEBUG=myapp:* npm start
+DEBUG=styleguide-express:* npm start
 ```
 
 Edit content on Contentful. Contact @johan_hallberg on Slack to get priviliges
