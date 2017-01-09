@@ -5,7 +5,7 @@ POC of Contentful CMS and Express for building styleguide
 ```
 npm install
 ```
-then to run
+then to run i debug mode
 ```
 DEBUG=styleguide-express:* npm start
 ```
