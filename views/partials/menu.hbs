@@ -1,0 +1,21 @@
+{{{printMenu globalMenu}}}
+
+<ul class="menu">
+  {{#each globalMenu}}
+  <li><a href="/{{itemSlug}}"
+    {{#if active}}
+      class="active"
+    {{/if}}>
+    {{itemTitle}}</a>
+    <ul class="menu__children {{#if active}}active{{/if}}">
+    {{#each children}}
+      <li><a href="/{{itemSlug}}/{{subSlug}}"
+        {{#if active}}
+          class="active"
+          {{/if}}>
+        {{subTitle}}</a>
+    {{/each}}
+    </ul>
+  </li>
+  {{/each}}
+</ul>

@@ -29,7 +29,7 @@ router.param('post', function(req, res, next, post) {
 });
 
 router.get('/:category/:post', function(req, res) {
-    res.render('post', { menu: req.menu, item: req });
+    res.render('post', { globalMenu: req.menu, item: req });
 });
 
 /*

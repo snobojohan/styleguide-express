@@ -4,7 +4,9 @@ var express = require('express'),
     favicon = require('serve-favicon'),
     logger  = require('morgan'),
     cookieParser = require('cookie-parser'),
-    bodyParser    = require('body-parser');
+    bodyParser    = require('body-parser'),
+    hbs = require('hbs'),
+    hbsutils = require('hbs-utils')(hbs);
 
 // Routes
 var routes = require('./routes/index');
@@ -15,7 +17,14 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-// uncomment after placing your favicon in /public
+hbsutils.registerWatchedPartials(__dirname + '/views/partials');
+
+hbs.registerHelper('printMenu', function( menu,options) {
+  console.log(menu)
+  var result = '';
+  return new hbs.SafeString(result);
+});
+
 app.use(
   favicon(path.join(__dirname, 'public', 'favicon.ico'))
 );

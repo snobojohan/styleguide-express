@@ -8,38 +8,35 @@ function getContent () {
 
 function getMenu(entries, postSlug){
 
-  console.log("€€€€€ ", postSlug)
+  function activePost(item) {
 
-  var menu = {items:[]};
+    return item.fields.slug === postSlug;
+  }
 
-  entries.items.forEach(function (entry) {
-    if(entry.fields.categoryName) {
-      if( entry.fields.postsInCategory ) {
-        entry.fields.postsInCategory.forEach(function (postsInCategory) {
-          console.log( ">>>", postsInCategory.fields.title, postsInCategory.fields.slug );
-          if(postsInCategory.fields.slug === postSlug){
-            // TODO: active
-          }
-        })
+  function makeSubMenu(item){
+    console.log("=================");
+    console.log(item);
+    
+    var sm = {};
+    sm['subTitle'] = item.fields.title
+    sm['subSlug'] = item.fields.slug
+    sm['active'] = item.fields.slug === postSlug;
+    sm['parent'] = item.fields.slug === postSlug;
 
-        menu.items.push(
-          {
-            categoryName: entry.fields.categoryName,
-            slug: entry.fields.slug,
-            active: false, // TODO: HEre
-            children: [
-              { foo: "bar"},
-              { foo: "rab" }
-            ]
-          }
-        )
+    return sm;
+  }
 
-      }
-    }
+  function makeMenu(item) {
+    var mm = {};
+    mm['itemTitle'] = item.fields.categoryName
+    mm['itemSlug'] = item.fields.slug
+    mm['active'] = (item.fields.postsInCategory.find(activePost) !== undefined) ? true : false;
+    mm['children'] = item.fields.postsInCategory.map(makeSubMenu);
 
-  })
-  console.log(menu);
-  return "Fooooo " + postSlug
+    return mm;
+  }
+
+  return entries.items.map(makeMenu);
 }
 
 function getPost(contentAndMenu){
