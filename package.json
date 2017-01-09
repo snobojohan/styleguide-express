@@ -17,8 +17,8 @@
     "express": "~4.14.0",
     "hbs": "~4.0.1",
     "hbs-utils": "0.0.4",
+    "helper-markdown": "^0.2.1",
     "morgan": "~1.7.0",
-    "node-sass-middleware": "0.9.8",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {

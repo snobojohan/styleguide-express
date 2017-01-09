@@ -20,10 +20,12 @@ app.set('view engine', 'hbs');
 hbsutils.registerWatchedPartials(__dirname + '/views/partials');
 
 hbs.registerHelper('printMenu', function( menu,options) {
-  console.log(menu)
   var result = '';
   return new hbs.SafeString(result);
 });
+
+// hbs.registerHelper('markdown');
+hbs.registerHelper('markdown', require('helper-markdown'));
 
 app.use(
   favicon(path.join(__dirname, 'public', 'favicon.ico'))
@@ -33,18 +35,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+
 app.use(sassMiddleware({
     /* Options */
     src: path.join(__dirname, 'sass'),
     dest: path.join(__dirname, 'public'),
     debug: true,
-    outputStyle: 'compressed',
-    prefix:  '/stylesheets'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+    outputStyle: 'compressed'
 }));
 
 app.use(
-  express.static(path.join(__dirname, 'public'))
+    express.static(path.join(__dirname, 'public'))
 );
+
+
 
 //  Connect all our routes to our application
 app.use('/', routes);

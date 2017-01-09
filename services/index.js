@@ -6,41 +6,62 @@ function getContent () {
   return client.getEntries(query)
 }
 
+
+
 function getMenu(entries, postSlug){
 
-  function activePost(item) {
+  var tempParent;
 
-    return item.fields.slug === postSlug;
-  }
+  function activePost(item) {
+        return item.fields.slug === postSlug;
+    }
 
   function makeSubMenu(item){
-    console.log("=================");
-    console.log(item);
-    
     var sm = {};
-    sm['subTitle'] = item.fields.title
-    sm['subSlug'] = item.fields.slug
-    sm['active'] = item.fields.slug === postSlug;
-    sm['parent'] = item.fields.slug === postSlug;
-
+    sm['title'] = item.fields.title
+    sm['slug'] = item.fields.slug
+    sm['active'] = item.fields.slug === postSlug ? true : false
+    sm['parentSlug'] = tempParent;
     return sm;
   }
 
   function makeMenu(item) {
     var mm = {};
-    mm['itemTitle'] = item.fields.categoryName
-    mm['itemSlug'] = item.fields.slug
-    mm['active'] = (item.fields.postsInCategory.find(activePost) !== undefined) ? true : false;
-    mm['children'] = item.fields.postsInCategory.map(makeSubMenu);
+    mm['title'] = item.fields.categoryName
+    mm['slug'] = item.fields.slug
+
+      tempParent = item.fields.slug
+
+    mm['active'] = (item.fields.postsInCategory.find(activePost) !== undefined) ? true : false
+    mm['children'] = item.fields.postsInCategory.map(makeSubMenu)
 
     return mm;
   }
 
   return entries.items.map(makeMenu);
+
 }
 
-function getPost(contentAndMenu){
-  return "Bar"
+function getPost(entries, postSlug){
+
+    var ret;
+
+    function activePost(item) {
+
+
+        return item.fields.slug === postSlug;
+    }
+
+    entries.items.forEach(function(item) {
+
+        var test = item.fields.postsInCategory.find(activePost);
+
+        if(test !== undefined){
+            ret = test;
+        }
+    });
+
+    return ret;
 }
 
 module.exports = {

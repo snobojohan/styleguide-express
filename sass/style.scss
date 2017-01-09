@@ -2,20 +2,34 @@ body {
   font-size: 16px;
   font-family: sans-serif;
   color: #222;
-  background: #FAFAFA;
+  background: #FEFEFE;
   padding: 50px;
 }
 
 a {
-  color: #0074bd;
-  &:hover {
-    color: #029bff;
-  }
+  	color: #0074bd;
+	&:visited {
+		color: #0074bd;
+	}
+  	&:hover {
+    	color: #029bff;
+  	}
 }
 
 .menu {
   list-style-type: none;
-  .active {
-    font-weight: bold;
+  li {
+    list-style-type: none;
   }
+
+  a {
+
+	  text-decoration: none;
+	  &.active {
+		  font-weight: bold;
+	  }
+
+
+  }
+
 }

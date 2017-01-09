@@ -1,2 +1,11 @@
-<h1>Post</h1>
-<p>Post ::: {{ item.post }}</p>
+<h1>{{activePost.title}}</h1>
+
+<p>{{{markdown activePost.body }}}</p>
+
+<h2>Do</h2>
+<p>{{{ activePost.dos }}}</p>
+
+<h2>Don't</h2>
+<p>{{ activePost.donts }}</p>
+
+<div>{{ activePost.html }}</div>

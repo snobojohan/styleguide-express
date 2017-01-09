@@ -2,18 +2,18 @@
 
 <ul class="menu">
   {{#each globalMenu}}
-  <li><a href="/{{itemSlug}}"
+  <li><a href="/{{slug}}"
     {{#if active}}
       class="active"
     {{/if}}>
-    {{itemTitle}}</a>
+    {{title}}</a>
     <ul class="menu__children {{#if active}}active{{/if}}">
     {{#each children}}
-      <li><a href="/{{itemSlug}}/{{subSlug}}"
+      <li><a href="/{{parentSlug}}/{{slug}}"
         {{#if active}}
           class="active"
           {{/if}}>
-        {{subTitle}}</a>
+        {{title}}</a>
     {{/each}}
     </ul>
   </li>
