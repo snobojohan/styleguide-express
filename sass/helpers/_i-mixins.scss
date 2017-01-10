@@ -1,0 +1,348 @@
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+
+@import "../base/i-core-variables";
+@import "i-gradient";
+@import "i-transform";
+@import "i-animation";
+@import "i-text";
+@import "i-box-shadow";
+
+@mixin _include_vendor_prefixes() {
+	@if not($svt_disabled-cssit-vendor-prefixes) {
+		@content;
+	}
+}
+
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+
+/**
+ * We use mixins for simplify vendor prefixes and build functions with fallback
+ *
+ * Try to keep a minimum of vendor prefixes and always check http://caniuse.com for support
+ */
+
+/* Gradient
+   ========================================================================== */
+
+@mixin svt_background-gradient($gradient-start-color:$svt_color-white, $gradient-stop-color:$svt_color-lightlightgrey, $gradient-fallback-color:$svt_color-darkwhite) {
+	@include _include_vendor_prefixes {
+		background-image: -webkit-gradient(linear, left top, left bottom, from($gradient-start-color), to($gradient-stop-color));
+		background-image: -webkit-linear-gradient(top, $gradient-start-color, $gradient-stop-color);
+		background-image: -moz-linear-gradient(top, $gradient-start-color, $gradient-stop-color);
+	}
+
+	background-image: linear-gradient(top, $gradient-start-color, $gradient-stop-color);
+	background-color: $gradient-fallback-color;
+}
+
+/*
+	No support for Chrome v < 10, Safari v < 5.1 and iOS v < 5
+*/
+@mixin svt_background-gradient-angle($angle:-45deg, $gradient-from-color:$svt_color-lightlightgrey, $gradient-to-color:$svt_color-lightlightgrey, $gradient-fallback-color:$svt_color-darkwhite) {
+	@include _include_vendor_prefixes {
+		background-image: -moz-linear-gradient($angle, $gradient-from-color 0%, $gradient-to-color 100%);
+		background-image: -webkit-linear-gradient($angle, $gradient-from-color 0%, $gradient-to-color 100%);
+	}
+
+	background-image: linear-gradient($angle, $gradient-from-color 0%, $gradient-to-color 100%);
+}
+
+@mixin svt_background-gradient-vertical($gradient-start-color: $svt_color-white, $gradient-stop-color: $svt_color-lightlightgrey) {
+	background-color: mix($gradient-start-color, $gradient-stop-color, 60%);
+
+	@include _include_vendor_prefixes {
+		background-image: -moz-linear-gradient(top, $gradient-start-color, $gradient-stop-color);
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, from($gradient-start-color), to($gradient-stop-color));
+		background-image: -webkit-linear-gradient(top, $gradient-start-color, $gradient-stop-color);
+	}
+
+	background-image: linear-gradient(top, $gradient-start-color, $gradient-stop-color);
+	background-repeat: repeat-x;
+}
+
+/* Horizontal */
+@mixin svt_background-gradient-horiz($left-color:$svt_color-white, $right-color:$svt_color-black) {
+	@include _include_vendor_prefixes {
+		background-image: -moz-linear-gradient(left, $left-color 0%, $right-color 100%);
+		background-image: -webkit-gradient(linear, left top, right top, color-stop(0, $left-color), color-stop(1, $right-color));
+		background-image: -webkit-linear-gradient(left, $left-color 0%, $right-color 100%);
+	}
+
+	background-image: linear-gradient(left, $left-color 0%, $right-color 100%);
+}
+
+/* Horizontal  3 stops */
+@mixin svt_background-gradient-horiz-3stop($gradient-start-color:$svt_color-white, $gradient-middle-color:$svt_color-blue, $gradient-stop-color:$svt_color-lightlightgrey, $gradient-fallback-color:$svt_color-darkwhite) {
+	@include _include_vendor_prefixes {
+		background: -moz-linear-gradient(left, $gradient-start-color 0%, $gradient-middle-color 50%, $gradient-stop-color 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%, $gradient-start-color), color-stop(50%, $gradient-middle-color), color-stop(100%, $gradient-stop-color)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(left, $gradient-start-color 0%, $gradient-middle-color 50%, $gradient-stop-color 100%); /* Chrome10+,Safari5.1+ */
+	}
+
+	background: linear-gradient(left, $gradient-start-color 0%, $gradient-middle-color 50%, $gradient-stop-color 100%); /* W3C */
+}
+
+/* Background size
+   ========================================================================== */
+
+/*
+ * If the property has only one value, it applies both horizontally and vertically.
+ * If there are two, the first one refers to the width, the second to the height of the background image.
+ */
+@mixin svt_background-size($width:auto, $height:auto) {
+	@include _include_vendor_prefixes {
+		-moz-background-size: $width, $height; // FF 3.6
+	}
+
+	background-size: $width, $height;
+}
+
+/* Border radius
+   ========================================================================== */
+@mixin svt_border-radius($_radius: 3px, $radius-top-left:$_radius, $radius-top-right:$_radius, $radius-bottom-right:$_radius, $radius-bottom-left:$_radius) {
+	@include _include_vendor_prefixes {
+		-webkit-border-radius: $radius-top-left $radius-top-right $radius-bottom-right $radius-bottom-left;
+		-moz-border-radius: $radius-top-left $radius-top-right $radius-bottom-right $radius-bottom-left;
+	}
+
+	border-radius: $radius-top-left $radius-top-right $radius-bottom-right $radius-bottom-left;
+}
+
+/* Border image
+   ========================================================================== */
+
+@mixin svt_border-image($url, $width, $style) {
+	@include _include_vendor_prefixes {
+		-webkit-border-image: $url $width $style;
+		-moz-border-image: $url $width $style;
+	}
+
+	border-image: $url $width $style;
+}
+
+/* Boxsizing
+   ========================================================================== */
+
+/**
+ * General box-sizing mixin
+ *
+ * @arguments
+ * 		border-box
+ * 		content-box
+ * 		padding-box
+ *
+ * w3c default is content-box
+ */
+
+@mixin svt_box-sizing($box-sizing:border-box) {
+	@include _include_vendor_prefixes {
+		-moz-box-sizing: $box-sizing;
+		-webkit-box-sizing: $box-sizing;
+	}
+
+	box-sizing: $box-sizing;
+}
+
+/* Clearfix
+   ========================================================================== */
+
+@mixin svt_clearfix() {
+
+	&:before,
+	&:after {
+		content: "\0020";
+		display: block;
+		height: 0;
+		visibility: hidden;
+	}
+
+	&:after {
+		clear: both;
+	}
+
+	// Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page
+	& {
+		zoom: 1;
+	}
+}
+
+/* IE7 inline-block
+   ========================================================================== */
+
+@mixin svt_inline-block() {
+	display: inline-block;
+
+	// Only used for IE7 // TODO browser hack
+	@if $ie-lte-8 {
+		*display: inline;
+		*zoom: 1;
+	}
+}
+
+/* Retina
+   ========================================================================== */
+
+// Using content block mixins produces a lot of extra css so use with caution.
+@mixin svt_retina() {
+	@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+	screen and (-moz-min-device-pixel-ratio: 1.5),
+	screen and (-o-min-device-pixel-ratio: 1.5),
+	screen and (-ms-min-device-pixel-ratio: 1.5),
+	screen and (min-device-pixel-ratio: 1.5) {
+		@content;
+	}
+}
+
+/* Setting color on placeholder on inputs
+   ========================================================================== */
+
+@mixin svt_placeholder-color($the-color:$svt_color-grey) {
+	&::-webkit-input-placeholder { /* WebKit browsers */
+		color: $the-color;
+	}
+	&:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		color: $the-color; // Because Mozilla fades em out some more
+	}
+	&::-moz-placeholder { /* Mozilla Firefox 19+ */
+		color: $the-color; // Because Mozilla fades em out some more
+	}
+	&:-ms-input-placeholder { /* Internet Explorer 10+ */
+		color: $the-color;
+	}
+}
+
+/* Center content
+   ============================================ */
+// TODO add documentation about how this has to be used with svt_center__content
+@mixin svt_center() {
+	clear: both;
+	text-align: center;
+}
+
+// TODO add documentation about how this has to be used with svt_center
+@mixin svt_center__content() {
+	margin: 0 auto;
+	overflow: hidden;
+	@include svt_inline-block();
+}
+
+/* Boxsizing
+   ========================================================================== */
+
+/* TODO: One box-sizing function with inparam for value instead */
+@mixin svt_box-sizing_border-box {
+	@include _include_vendor_prefixes {
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+	}
+
+	box-sizing: border-box;
+}
+
+@mixin svt_box-sizing_content-box {
+	@include _include_vendor_prefixes {
+		-moz-box-sizing: content-box;
+		-webkit-box-sizing: content-box;
+	}
+
+	box-sizing: content-box;
+}
+
+/* Opacity
+   ========================================================================== */
+
+@mixin svt_opacity($opacity:0.25) {
+	// originial mixin http://compass-style.org/reference/compass/css3/opacity/
+	filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+	opacity: $opacity;
+}
+
+/* IE8 Only Mixin
+   ========================================================================== */
+@mixin svt-ie-lte-8() {
+	@if $ie-lte-8 {
+		@content;
+	}
+}
+
+@mixin svt-not-ie-lte-8() {
+	@if not $ie-lte-8 {
+		@content;
+	}
+}
+
+
+/**
+ * We use mixins for simplify vendor prefixes and build functions with fallback
+ *
+ * Try to keep a minimum of vendor prefixes and always check http://caniuse.com for support
+ */
+
+/* Flexbox
+   ========================================================================== */
+
+// scss-lint:disable VendorPrefixes
+@mixin svtse_display-flex() {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+@mixin svtse_flex-wrap() {
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+@mixin svtse_flex-direction($direction) {
+	-webkit-flex-direction: $direction;
+	-ms-flex-direction: $direction;
+	flex-direction: $direction;
+}
+
+@mixin svtse_flex($value) {
+	-ms-flex: $value;
+	flex: $value;
+	-webkit-flex: $value;
+}
+
+
+@mixin svtse_multi-gradient($angle, $colors...) {
+	background-image: -webkit-linear-gradient($angle, $colors);
+	background-image: -moz-linear-gradient($angle, $colors);
+	background-image: linear-gradient($angle, $colors);
+}
+
+@mixin overflow-scrolling($param) {
+	-webkit-overflow-scrolling: $param;
+}
+
+@mixin val_hide-ms-input-controls {
+	// don't show the x for text inputs
+	&::-ms-clear {
+		width: 0;
+		height: 0;
+	}
+
+	// don't show the eye for password inputs
+	&::-ms-reveal {
+		width: 0;
+		height: 0;
+	}
+}
+
+@mixin svtse_column-count($column-count:1) {
+	-webkit-column-count: $column-count;
+	-moz-column-count: $column-count;
+	column-count: $column-count;
+}
+
+@mixin svtse_column-break-inside($column-break-type:avoid) {
+	-webkit-column-break-inside: $column-break-type;
+	page-break-inside: $column-break-type;
+	break-inside: $column-break-type;
+}

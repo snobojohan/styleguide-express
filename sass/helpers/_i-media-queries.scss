@@ -1,0 +1,168 @@
+@import "base/i-breakpoints";
+
+/* ==========================================================================
+   Media queries
+   ========================================================================== */
+
+/**
+ * We allways code mobil first and extra features in browsers that's supports media queries
+ *
+ * xsmall	<= 600px (mobile first)
+ * small	> 601px and <= 800px (ex. iPad portrait)
+ * medium	> 800px and <= 1024px (ex iPad landscape, small desktops and laptops)
+ * large	> 1024px (ex desktops and laptops)
+ * xlarge	> 1824px (ex tv and large screens) NOT IN USE RIGHT NOW!
+ *
+ * The order of the media queries are as follow:
+ * - Small or above
+ * - Medium or above
+ * - Large or above
+ * - Extra large or above
+ * - Small, medium and large
+ * - Small and medium
+ * - Medium and large
+ * - Small
+ * - Medium
+ * - Large
+ *
+ * IE <= 8 gets the same CSS as large
+ */
+
+/* X-Extra Small
+   ========================================================================== */
+@mixin svt_mq-extra-extra-small() {
+	@if not $ie-lte-8 {
+		@media only screen and (max-width: $svt_mq-breakpoint-max-XXS) {
+			@content;
+		}
+	}
+}
+
+/* Small or above
+   ========================================================================== */
+@mixin svt_mq-gte-small() {
+	@if $ie-lte-8 {
+		@content;
+	} @else {
+		@media only screen and (min-width: $svt_mq-breakpoint-min-S) {
+			@content;
+		}
+	}
+}
+
+/* Medium or above
+   ========================================================================== */
+@mixin svt_mq-gte-medium() {
+	@if $ie-lte-8 {
+		@content;
+	} @else {
+		@media only screen and (min-width: $svt_mq-breakpoint-min-M) {
+			@content;
+		}
+	}
+}
+
+/* Large or above
+   ========================================================================== */
+@mixin svt_mq-gte-large() {
+	@if $ie-lte-8 {
+		@content;
+	} @else {
+		@media only screen and (min-width: $svt_mq-breakpoint-min-L) {
+			@content;
+		}
+	}
+}
+
+/* Extra large or above
+   ========================================================================== */
+@mixin svt_mq-gte-xlarge() {
+	@if not $ie-lte-8 {
+		@media only screen and (min-width: $svt_mq-breakpoint-min-XL) {
+			@content;
+		}
+	}
+}
+
+/* Small, medium & large
+   ========================================================================== */
+@mixin svt_mq-small-medium-large() {
+	@if $ie-lte-8 {
+		@content;
+	} @else {
+		@media only screen and (min-width: $svt_mq-breakpoint-min-S) and ($svt_mq-breakpoint-max-L) {
+			@content;
+		}
+	}
+}
+
+/* Small & medium
+   ========================================================================== */
+@mixin svt_mq-small-medium() {
+	@if not $ie-lte-8 {
+		@media only screen and (min-width: $svt_mq-breakpoint-min-S) and (max-width: $svt_mq-breakpoint-max-M) {
+			@content;
+		}
+	}
+}
+
+/* Medium & large
+   ========================================================================== */
+@mixin svt_mq-medium-large() {
+	@if $ie-lte-8 {
+		@content;
+	} @else {
+		@media only screen and (min-width: $svt_mq-breakpoint-min-M) and (max-width: $svt_mq-breakpoint-max-L) {
+			@content;
+		}
+	}
+}
+
+/* Small
+   ========================================================================== */
+@mixin svt_mq-small() {
+	@if not $ie-lte-8 {
+		@media only screen and (min-width: $svt_mq-breakpoint-min-S) and (max-width: $svt_mq-breakpoint-max-S) {
+			@content;
+		}
+	}
+}
+
+/* Medium
+   ========================================================================== */
+@mixin svt_mq-medium() {
+	@if not $ie-lte-8 {
+		@media only screen and (min-width: $svt_mq-breakpoint-min-M) and (max-width: $svt_mq-breakpoint-max-M) {
+			@content;
+		}
+	}
+}
+
+/* Large
+   ========================================================================== */
+@mixin svt_mq-large() {
+	@if $ie-lte-8 {
+		@content;
+	} @else {
+		@media only screen and (min-width: $svt_mq-breakpoint-min-L) and (max-width: $svt_mq-breakpoint-max-L) {
+			@content;
+		}
+	}
+}
+
+/**
+ * Media query to match all sizes. Mainly used as a feature detection for media queries.
+ */
+@mixin svtse_mq-supported() {
+	@media only screen and (min-width: 0) {
+		@content;
+	}
+}
+
+/* Less than small
+   ========================================================================== */
+@mixin svtse_mq-le-small() {
+	@media only screen and (max-width: $svt_mq-breakpoint-max-XS) {
+		@content;
+	}
+}

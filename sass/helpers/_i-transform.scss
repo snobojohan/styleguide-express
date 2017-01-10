@@ -1,0 +1,54 @@
+/* Transform
+   ========================================================================== */
+/*
+ * This function is only possible in SASS 3.3. Waiting for upgrade.....
+ *
+ *  @usage svt_transform(translate3d, 10px, 20px, 0);
+ *
+ *	@mixin svt_transform($transform-function, $values...) {
+ *		-moz-transform: call($transform-function, $values);
+ *		-webkit-transform: call($transform-function, $values);
+ *		-ms-transform: call($transform-function, $values);
+ *		transform: call($transform-function, $values);
+ *	}
+ */
+
+/* Transform origin
+   ========================================================================== */
+
+@mixin svt_origin($left: 50%, $top: 50%) {
+	@include _include_vendor_prefixes {
+		-moz-transform-origin: $left $top;
+		-webkit-transform-origin: $left $top;
+		-ms-transform-origin: $left $top;
+	}
+
+	transform-origin: $left $top;
+}
+
+/* Transform scale
+   ========================================================================== */
+
+@mixin svt_scale($scale-value:0.5) {
+	@include _include_vendor_prefixes {
+		-moz-transform: scale(#{$scale-value});
+		-webkit-transform: scale(#{$scale-value});
+		-ms-transform: scale(#{$scale-value});
+	}
+
+	transform: scale(#{$scale-value});
+}
+
+
+/* Rotate
+   ========================================================================== */
+
+@mixin svt_rotate($degrees: 90) {
+	@include _include_vendor_prefixes {
+		-moz-transform: rotate(#{$degrees}deg);
+		-webkit-transform: rotate(#{$degrees}deg);
+		-ms-transform: rotate(#{$degrees}deg);
+	}
+
+	transform: rotate(#{$degrees}deg);
+}

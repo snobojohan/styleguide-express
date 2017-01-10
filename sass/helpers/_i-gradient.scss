@@ -1,0 +1,18 @@
+@import "../base/i-colors";
+
+/* ==========================================================================
+   Gradient
+   ========================================================================== */
+
+// Vertical
+@mixin svt_background-vertical-gradient($gradient-start-color:$svt_color-white, $gradient-stop-color:$svt_color-lightlightgrey, $gradient-fallback-color:$svt_color-darkwhite) {
+	background-image: linear-gradient(top, $gradient-start-color, $gradient-stop-color);
+	background-color: $gradient-fallback-color;
+}
+
+
+// Horizontal
+@mixin svt_background-horiz-gradient($left-color:$svt_color-white, $right-color:$svt_color-black, $gradient-fallback-color:$svt_color-darkwhite) {
+	background-image: linear-gradient(left , $left-color 0%, $right-color 100%);
+	background-color: $gradient-fallback-color;
+}

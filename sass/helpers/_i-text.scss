@@ -1,0 +1,34 @@
+@import "../base/i-typography";
+
+/* Mixins for Typography
+   ========================================================================== */
+
+@mixin svt_to-rem($property, $sizeValue) {
+	#{$property}: $sizeValue + px;
+	#{$property}: ($sizeValue / $svt_font-base-size) + rem;
+}
+
+@mixin svt_font-size($sizeValue: $svt_font-base-size) {
+	@include svt_to-rem(font-size, $sizeValue);
+}
+
+
+/* Text overflow
+   ========================================================================== */
+
+@mixin svt_text-overflow($type:ellipsis, $white-space:nowrap, $width:100%, $overflow:hidden) {
+	white-space: $white-space;
+	width: $width;
+	overflow: $overflow;
+	text-overflow: $type;
+}
+
+@mixin no-user-select() {
+	@include _include_vendor_prefixes {
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+	}
+
+	user-select: none;
+}

@@ -1,0 +1,341 @@
+/* ==========================================================================
+   SVT boilerplate
+   ========================================================================== */
+@import "i-typography";
+/**
+ * Based on HTML5 Boilerplate
+ * Updated/rewritten by svt.se so we can't just add a newer version
+ */
+
+/*
+ * HTML5 Boilerplate
+ *
+ * style.css contains a reset, font normalization and some base styles.
+ *
+ * credit is left where credit is due.
+ * much inspiration was taken from these projects:
+ * yui.yahooapis.com/2.8.1/build/base/base.css
+ * camendesign.com/design/
+ * praegnanz.de/weblog/htmlcssjs-kickstart
+ */
+
+/*
+ * html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
+ * v1.4 2009-07-27 | Authors: Eric Meyer & Richard Clark
+ * html5doctor.com/html-5-reset-stylesheet/
+ */
+
+/* Can't follow our rules on comments here :-( */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+	font-size:100%;
+	vertical-align:baseline;
+	background:transparent;
+}
+
+/* Can't follow our rules on comments here :-( */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display:block;
+}
+
+nav ul { list-style:none; }
+
+blockquote,
+q {
+	quotes:none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content:'';
+	content:none;
+}
+
+a {
+	margin:0;
+	padding:0;
+	font-size:100%;
+	vertical-align:baseline;
+	background:transparent;
+}
+
+ins {
+	background-color:$svtse_color-blue;
+	color:$svtse_color-white;
+	text-decoration:none;
+}
+
+mark {
+	background-color:$svtse_color-blue;
+	color:$svtse_color-white;
+	font-style:italic;
+	font-weight:bold;
+}
+
+del { text-decoration: line-through; }
+
+abbr[title],
+dfn[title] {
+	border-bottom:1px dotted;
+	cursor:help;
+}
+
+/* tables still need cellspacing="0" in the markup */
+table {
+	border-spacing:0;
+	border-collapse:collapse;
+}
+
+hr {
+	display:block;
+	height:1px;
+	border:0;
+	border-top:1px solid $svtse_color-grey-70prc;
+	margin:1em 0;
+	padding:0;
+}
+
+input, select { vertical-align:middle; }
+
+/* Font reset
+   ========================================================================== */
+
+/* fonts.css from the YUI Library: developer.yahoo.com/yui/
+ * Refer to developer.yahoo.com/yui/3/cssfonts/ for font sizing percentages
+ *
+ * There are three custom edits:
+ * remove arial, helvetica from explicit font stack
+ * we normalize monospace styles ourselves
+ * table font-size is reset in the HTML5 reset above so there is no need to repeat
+ *
+ * TODO: Maybe set 12 as base font size
+*/
+
+body {
+	font:13px/1.231 sans-serif;
+	/* hack retained to preserve specificity */
+	*font-size:small;
+}
+
+select,
+input,
+textarea,
+button {
+	font: 99% arial,helvetica,clean,sans-serif;
+}
+
+/* normalize monospace sizing
+ * en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome
+ */
+pre,
+code,
+kbd,
+samp {
+	font-family: monospace, sans-serif;
+}
+
+/* minimal base styles */
+body,
+select,
+input,
+textarea {
+	color: $svtse_color-text-normal;
+	font-family: $svt_font-family-regular;
+}
+
+/* Hacks
+   ========================================================================== */
+
+/* always force a scrollbar in non-IE */
+html {
+	overflow-y: scroll;
+}
+
+/* Fix for text bug when swithing portrait -> landscape on iPhones and iPads */
+@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
+	html {
+		-webkit-text-size-adjust: none;
+	}
+}
+
+/* Links
+   ========================================================================== */
+
+a:focus { outline: $svtse_color-grey-20prc dotted thin; }
+
+/* Improve readability when focused and hovered in all browsers: h5bp.com/h */
+a:hover,
+a:active {
+	outline: 0;
+}
+
+/* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
+/* a:hover, a:active { outline: none; } */
+
+a, a:active,
+a:visited {
+	color: $svtse_link-color;
+	text-decoration: none;
+}
+a:hover {
+	color: $svtse_link-color-hover;
+	text-decoration: underline;
+}
+
+/* Lists
+   ========================================================================== */
+
+ul,
+ol {
+	/* was 1.8em in Paul Irish version */
+	margin-left: $svtse_ul-ol-leftmargin;
+}
+
+ol { list-style-type: decimal; }
+
+/* Remove margins for navigation lists */
+nav ul,
+nav li {
+	margin: 0;
+}
+
+small { font-size: 85%; }
+strong, th { font-weight: bold; }
+
+td, td img { vertical-align: top; }
+
+sub {
+	vertical-align: sub;
+	font-size: smaller;
+}
+sup {
+	vertical-align: super;
+	font-size: smaller;
+}
+
+pre {
+	padding: 15px;
+	/* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
+	/* CSS2 */
+	white-space: pre;
+	/* CSS 2.1 */
+	white-space: pre-wrap;
+	/* CSS 3 (and 2.1 as well, actually) */
+	white-space: pre-line;
+	/* IE */
+	word-wrap: break-word;
+}
+/* thnx ivannikolic! www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
+textarea { overflow: auto; }
+
+/* thnx ivannikolic! */
+.ie6 legend,
+.ie7 legend {
+	margin-left: -7px;
+}
+
+/*
+ * align checkboxes, radios, text inputs with their label
+ * by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css
+ */
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; }
+.ie7 input[type="checkbox"] { vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+
+/* hand cursor on clickable input elements */
+label,
+input[type=button],
+input[type=submit],
+button {
+	cursor: pointer;
+}
+
+/* webkit browsers add a 2px margin outside the chrome of form elements */
+button,
+input,
+select,
+textarea {
+	margin: 0;
+}
+
+/* TODO: keep this? colors for form validity */
+input:valid, textarea:valid {  }
+
+input:invalid,
+textarea:invalid {
+	border-radius: 1px;
+	-moz-box-shadow: 0 0 5px red;
+	-webkit-box-shadow: 0 0 5px red;
+	box-shadow: 0 0 5px red;
+}
+
+/* These selection declarations have to be separate.
+ * No text-shadow: twitter.com/miketaylr/status/12228805301
+ * Also: hot pink.
+
+::-moz-selection{
+	background: $svt_highlight-bgcolor;
+	text-shadow: none;
+}
+::selection {
+	background: $svt_highlight-bgcolor;
+	text-shadow: none;
+}
+
+//  j.mp/webkit-tap-highlight-color
+
+a:link {
+	-webkit-tap-highlight-color: $svt_tap-highlight-bgcolor;
+}
+*/
+
+/*
+ * make buttons play nice in IE:
+ * www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
+ */
+button {
+	width: auto;
+	overflow: visible;
+}
+
+/*
+ * bicubic resizing for non-native sized IMG:
+ * code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
+ * TODO: add this in head or change selector
+ */
+.ie7 img { -ms-interpolation-mode: bicubic; }
+
+/* Non-semantic helper classes TODO: move to extends ?
+   ========================================================================== */
+
+/* Liquify all images and video TODO: do this more clever?
+   ========================================================================== */
+
+img, video, object {
+	max-width: 100%;
+}
+/* Hide external widgets such as facebook and twitter if no-js */
+/*
+ * .no-js .svtExternalJsWidget {
+ * 	visibility: hidden;
+ * }
+ */
+

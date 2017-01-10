@@ -1,0 +1,64 @@
+/* ==========================================================================
+   A11y classes for better accessibility support
+   ========================================================================== */
+
+
+/* Hide visually but not for screen readers
+   ========================================================================== */
+
+.svtse_a11y-hidden {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+
+/* Outlines on focus
+   ========================================================================== */
+
+/* Tight, no offset */
+%svtse_a11y-focus-outline-tight {
+
+	outline: 2px solid $svtse_color-focus-outline-default;
+}
+
+%svtse_a11y-focus-outline-thin-tight {
+
+	outline: 1px solid $svtse_color-focus-outline-default;
+}
+
+
+/* Normal/standard border */
+%svtse_a11y-focus-outline-normal {
+
+	outline: 2px solid $svtse_color-focus-outline-default;
+	outline-offset: 2px;
+}
+
+%svtse_a11y-focus-outline-normal-black {
+
+	outline: 2px solid $svtse_color-black;
+	outline-offset: 2px;
+}
+
+
+%svtse_a11y-focus-outline-normal-white {
+
+	outline: 2px solid $svtse_color-white;
+	outline-offset: 2px;
+}
+
+/* Loose border */
+%svtse_a11y-focus-outline-loose {
+	outline: 2px solid $svtse_color-focus-outline-default;
+	outline-offset: 4px;
+}
+
+// Underline
+%svtse_a11y-focus-underline {
+	outline: none;
+	text-decoration: underline;
+}

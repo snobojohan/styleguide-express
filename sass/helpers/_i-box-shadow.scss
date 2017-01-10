@@ -1,0 +1,39 @@
+/* Box shadow
+   ========================================================================== */
+
+@mixin svt_box-shadow($color:$svt_color-darkgrey, $h-offset:0, $v-offset:2px , $blur:2px, $spread:0, $inset:false) {
+	@if $inset == true {
+		@include _include_vendor_prefixes {
+			-moz-box-shadow: inset $h-offset $v-offset $blur $spread $color;
+			-webkit-box-shadow: inset $h-offset $v-offset $blur $spread $color;
+		}
+
+		box-shadow: inset $h-offset $v-offset $blur $spread $color;
+	} @else {
+		@include _include_vendor_prefixes {
+			-moz-box-shadow: $h-offset $v-offset $blur $spread $color;
+			-webkit-box-shadow: $h-offset $v-offset $blur $spread $color;
+		}
+
+		box-shadow: $h-offset $v-offset $blur $spread $color;
+	}
+}
+
+/* simple boxshadow mixing so we can chain multiple boxshadows */
+@mixin svt_box-shadow-multi($shadow) {
+	@include _include_vendor_prefixes {
+		-webkit-box-shadow: $shadow;
+		-moz-box-shadow: $shadow;
+	}
+
+	box-shadow: $shadow;
+}
+
+@mixin svt_box-shadow-clear() {
+	@include _include_vendor_prefixes {
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+	}
+
+	box-shadow: none;
+}

@@ -1,0 +1,178 @@
+/* Default font family
+   ========================================================================== */
+@import "i-typography";
+$svtse_font-family-sans-serif: 'Publik', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+
+
+/* Typography
+   ========================================================================== */
+
+/**
+ * Avoid adding colors, text-transform etc here, use it in it's context when you extend this classes
+ *
+ * Referens can be found at:
+ * https://svt.slack.com/files/oskarg/F09NJQ474/style_guide_svt.se_desktop.png
+ * https://svt.slack.com/files/oskarg/F09ND0E58/style_guide_svt.se_mobil.png
+ *
+ **/
+
+$_default-letter-space: 0.05em;
+
+/* News
+   ========================================================================== */
+
+@mixin svtse_typography-deprecated-svt-nyheter-label {
+	font-family: $svtse_font-family-sans-serif;
+	font-weight: bold;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+
+}
+
+@mixin svtse_typography-deprecated-nyhetsticker {
+	font-family: $svtse_font-family-sans-serif;
+	font-weight: bold;
+
+	line-height: (18/14);
+	letter-spacing: 0.2px;
+
+	@include svt_font-size(16);
+
+}
+
+@mixin svtse_typography-deprecated-nyhetsdestination {
+	font-family: $svtse_font-family-sans-serif;
+
+	@include svt_font-size(12);
+	line-height: (14/10);
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+
+	font-weight: normal;
+}
+
+@mixin svtse_typography-deprecated-nyhetsrubrik {
+	font-family: $svtse_font-family-sans-serif;
+	font-weight: bold;
+	@include svt_font-size(22);
+	line-height: (24/22);
+
+	@include svt_mq-gte-small {
+		@include svt_font-size(38);
+		line-height: (42/38);
+	}
+}
+
+@mixin svtse_typography-deprecated-liten-nyhetsrubrik {
+	font-family: $svtse_font-family-sans-serif;
+	font-weight: bold;
+
+	line-height: (18/16);
+
+	@include svt_font-size(17);
+
+	@include svt_mq-gte-small {
+
+		line-height: (20/18);
+
+		@include svt_font-size(20);
+	}
+}
+
+@mixin svtse_typography-deprecated-nyhetsbrodtext {
+	font-family: $svtse_font-family-sans-serif;
+	@include svt_font-size(14);
+	line-height: (18/14);
+
+	@include svt_mq-gte-small {
+		@include svt_font-size(16);
+		line-height: (20/16);
+	}
+}
+
+
+
+/* Deprecated typography
+   ========================================================================== */
+
+@mixin svtse_typography-deprecated-38-42-bold {
+	font-family: $svtse_font-family-sans-serif;
+	@include svt_font-size(38);
+	line-height: (42/38);
+	font-weight: bold;
+}
+
+@mixin svtse_typography-deprecated-24-28-bold {
+	font-family: $svtse_font-family-sans-serif;
+	@include svt_font-size(24);
+	line-height: (28/24);
+	font-weight: bold;
+}
+
+
+
+@mixin svtse_typography-deprecated-20-28-normal {
+	font-family: $svtse_font-family-sans-serif;
+	@include svt_font-size(20);
+	line-height: (28/20);
+	font-weight: normal;
+}
+
+@mixin svtse_typography-deprecated-18-22-bold {
+	font-family: $svtse_font-family-sans-serif;
+	@include svt_font-size(18);
+	line-height: (22/18);
+	font-weight: bold;
+}
+
+@mixin svtse_typography-deprecated-16-20-normal {
+	font-family: $svtse_font-family-sans-serif;
+	@include svt_font-size(16);
+	line-height: (20/16);
+	font-weight: normal;
+}
+
+
+
+@mixin svtse_typography-deprecated-14-18-bold {
+	font-family: $svtse_font-family-sans-serif;
+	@include svt_font-size(14);
+	line-height: (18/14);
+	font-weight: bold;
+}
+
+
+@mixin svtse_typography-deprecated-12-16-bold {
+	font-family: $svtse_font-family-sans-serif;
+	@include svt_font-size(12);
+	line-height: (16/12);
+	font-weight: bold;
+}
+
+@mixin svtse_typography-deprecated-12-16-bold-space {
+	font-family: $svtse_font-family-sans-serif;
+	@include svt_font-size(12);
+	line-height: (16/12);
+	font-weight: bold;
+	letter-spacing: $_default-letter-space;
+	text-transform: uppercase;
+}
+
+@mixin svtse_typography-deprecated-10-14-bold-space {
+	font-family: $svtse_font-family-sans-serif;
+	@include svt_font-size(10);
+	line-height: (14/10);
+	font-weight: bold;
+	letter-spacing: $_default-letter-space;
+	text-transform: uppercase;
+}
+
+@mixin svtse_typography-deprecated-9-12-bold-space {
+	font-family: $svtse_font-family-sans-serif;
+	@include svt_font-size(9);
+	line-height: (12/9);
+	font-weight: bold;
+	letter-spacing: $_default-letter-space;
+	text-transform: uppercase;
+}

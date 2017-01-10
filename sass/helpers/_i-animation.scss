@@ -1,0 +1,74 @@
+/* Transitions
+   ========================================================================== */
+
+@mixin svt_transition($property:all, $duration:0.3s, $timing-function:ease, $delay:0s) {
+	@include _include_vendor_prefixes {
+		-moz-transition: $property $duration $timing-function $delay;
+		-webkit-transition: $property $duration $timing-function $delay;
+	}
+
+	transition: $property $duration $timing-function $delay;
+}
+
+/* Animations
+   ========================================================================== */
+/*
+ * Example usage:
+ * @include svt_keyframe(fadeout) {
+ * 		0% {
+ * 			opacity: 1;
+ * 		}
+ *
+ * 		100% {
+ * 			opacity: 0;
+ * 		}
+ * }
+ */
+@mixin svt_keyframe($animation_name) {
+	@include _include_vendor_prefixes {
+		@-webkit-keyframes #{$animation_name} {
+			@content;
+		}
+
+		@-moz-keyframes #{$animation_name} {
+			@content;
+		}
+	}
+
+	@keyframes #{$animation_name} {
+		@content;
+	}
+}
+
+/*
+ * Example usage:
+ * @include svt_animation(changecolour, 10s, ease-out, 5s, 2, alternate)
+ */
+@mixin svt_animation($animation, $duration, $timing-function: ease, $delay:0, $iteration-count: 1, $animation-direction: normal) {
+
+	@include _include_vendor_prefixes {
+		-webkit-animation-delay: $delay;
+		-webkit-animation-duration: $duration;
+		-webkit-animation-name: $animation;
+		-webkit-animation-timing-function: $timing-function;
+		-webkit-animation-iteration-count: $iteration-count;
+		-webkit-animation-direction: $animation-direction;
+		-webkit-animation-fill-mode: forwards;
+
+		-moz-animation-delay: $delay;
+		-moz-animation-duration: $duration;
+		-moz-animation-name: $animation;
+		-moz-animation-timing-function: $timing-function;
+		-moz-animation-iteration-count: $iteration-count;
+		-moz-animation-direction: $animation-direction;
+		-moz-animation-fill-mode: forwards;
+	}
+
+	animation-delay: $delay;
+	animation-duration: $duration;
+	animation-name: $animation;
+	animation-timing-function: $timing-function;
+	animation-iteration-count: $iteration-count;
+	animation-direction: $animation-direction;
+	animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+}

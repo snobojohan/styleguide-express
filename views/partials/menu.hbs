@@ -1,21 +1,24 @@
-{{{printMenu globalMenu}}}
+<div class="svti_menu">
+	<nav class="svti_menu__area">
+		<ul class="svti_menu--list">
+			{{#each globalMenu}}
+				<li><a href="/{{slug}}"
+					{{#if active}}
+					   class="active"
+					{{/if}}>
+					{{title}}</a>
+					<ul class="svti_menu--list__children {{#if active}}active{{/if}}">
+						{{#each children}}
+						<li><a href="/{{parentSlug}}/{{slug}}"
+							{{#if active}}
+							   class="active"
+							{{/if}}>
+							{{title}}</a>
+						{{/each}}
+					</ul>
+				</li>
+			{{/each}}
+		</ul>
+	</nav>
+</div>
 
-<ul class="menu">
-  {{#each globalMenu}}
-  <li><a href="/{{slug}}"
-    {{#if active}}
-      class="active"
-    {{/if}}>
-    {{title}}</a>
-    <ul class="menu__children {{#if active}}active{{/if}}">
-    {{#each children}}
-      <li><a href="/{{parentSlug}}/{{slug}}"
-        {{#if active}}
-          class="active"
-          {{/if}}>
-        {{title}}</a>
-    {{/each}}
-    </ul>
-  </li>
-  {{/each}}
-</ul>

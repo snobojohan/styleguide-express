@@ -1,0 +1,22 @@
+/*
+@import "cachemap";
+
+@function _cachemap-value($path) {
+	@if variable-exists('cachemap') {
+		@if map-has-key($cachemap, $path) {
+			@return map-get($cachemap, $path);
+		} 
+		@warn "Unknown `#{$path}` in $cachemap.";
+		@return $path;
+	}
+	@warn "$cachemap is not defined.";
+	@return $path;
+}
+
+@function md5($path, $only-path: false) {
+	@if $only-path {
+		@return $path;	
+	}
+	@return _cachemap-value($path);	
+}
+*/

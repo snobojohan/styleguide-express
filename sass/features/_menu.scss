@@ -1,0 +1,37 @@
+.svti_menu {
+	position: inherit;
+	margin: 0;
+	padding: 0;
+	min-height: 40px;
+	border-bottom: 1px solid $svtse_color-grey-4prc;
+
+	@include svt_mq-gte-small {
+		padding-top: $svtse_vertical-divider--small;
+		padding-bottom: $svtse_vertical-divider--medium;
+	}
+
+	@media print {
+		display: none;
+	}
+
+	&__area {
+		@include svti_content-container();
+	}
+
+	&--list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		list-style-image: none;
+
+		li {
+			a.active {
+				font-weight: $svtse_font-weight-bold;
+			}
+		}
+
+		&__children {
+			margin-left: 2em;
+		}
+	}
+}

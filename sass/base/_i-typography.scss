@@ -1,0 +1,680 @@
+@import "i-colors";
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+
+/**
+ * Font sizes the YUI font way (start 13px)
+ *
+ * Read: http://developer.yahoo.com/yui/fonts/#fontsize
+ *
+ * Over 26 See: http://bit.ly/fontsizes-svt
+*/
+
+$svt_fs-10px		: 77%;
+$svt_fs-11px		: 85%;
+$svt_fs-12px		: 93%;
+$svt_fs-13px		: 100%;
+$svt_fs-14px		: 108%;
+$svt_fs-15px		: 116%;
+$svt_fs-16px		: 123.1%;
+$svt_fs-17px		: 131%;
+$svt_fs-18px		: 138.5%;
+$svt_fs-19px		: 146.5%;
+$svt_fs-20px		: 153.9%;
+$svt_fs-21px		: 161.6%;
+$svt_fs-22px		: 167%;
+$svt_fs-23px		: 174%;
+$svt_fs-24px		: 182%;
+$svt_fs-25px		: 189%;
+$svt_fs-26px		: 197%;
+$svt_fs-27px		: 207.7%;
+$svt_fs-30px		: 230.8%;
+$svt_fs-35px		: 269.2%;
+$svt_fs-36px		: 277%;
+$svt_fs-40px		: 307.7%;
+$svt_fs-43px		: 330.8%;
+$svt_fs-45px		: 346.2%;
+$svt_fs-46px		: 354%;
+$svt_fs-48px		: 369.2%;
+$svt_fs-50px		: 384.6%;
+$svt_fs-54px		: 415.4%;
+$svt_fs-60px		: 461.5%;
+
+$nfs-30px		: 43.3275564%;
+
+@mixin font-size($px, $base: 16) {
+	font-size: $px + px;
+	font-size: ($px / $base) + rem;
+}
+
+
+/* Default font family */
+$svt_font-family-sans-serif: 'Publik', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$svt_font-family-sans-serif-2: Helvetica, Arial, "Nimbus Sans L", "Bitstream Vera Sans", sans-serif;
+$svt_font-family-serif: Georgia, "New Century Schoolbook", "Nimbus Roman No9 L", Times, "Times New Roman", Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", serif;
+$svt_font-family-regular: $svt_font-family-sans-serif;
+
+
+// Default text color
+$svt_default-text-color: $svtse_color-text-normal;
+
+/* ==========================================================================
+   Text Colors and other constants
+   ========================================================================== */
+
+/*
+   Font Weights
+   -------------------------------------------------------------------------- */
+
+$svtse_font-weight-light: 300;
+$svtse_font-weight-normal: 400;
+$svtse_font-weight-bold: 700;
+$svtse_font-weight-black: 900;
+
+/* ==========================================================================
+   Raw Typography Mixins
+   ========================================================================== */
+/**
+ * The raw typography mixins should usually not be used directly but rather to be
+ * used as building blocks for the named typography mixins.
+ */
+
+$_default-letter-space: 0.05em;
+
+@mixin _uppercase() {
+	letter-spacing: $_default-letter-space;
+	text-transform: uppercase;
+}
+
+@mixin _font-base($size, $lineheight, $inverted: false) {
+
+	@include svt_font-size($size);
+	line-height: ($lineheight / $size);
+
+	@if $inverted {
+		color: $svtse_color-text-inverted;
+		@include svtse_font-smoothing();
+	} @else {
+		color: $svtse_color-text-normal;
+	}
+}
+
+@mixin _font-size($size, $lineheight) {
+	@include svt_font-size($size);
+}
+
+
+/*
+   Raw size: 40 / 48
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-raw_40_46_b {
+
+	@include _font-size(40, 46);
+	font-weight: bold;
+}
+
+@mixin svtse_typography-raw_40_46_n {
+
+	@include _font-size(40, 46);
+	font-weight: $svtse_font-weight-normal;
+}
+
+@mixin svtse_typography-raw_40_46_bc {
+
+	@include _font-size(40, 46);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-bold;
+}
+
+/*
+   Raw size: 30 / 40 (only used as an alternative to 40_46 in certain media queries)
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-raw-mq-alt_30_40_b {
+	@include _font-size(30, 40);
+	font-weight: $svtse_font-weight-bold;
+
+}
+
+@mixin svtse_typography-raw-mq-alt_30_40_n {
+	@include _font-size(30, 40);
+	font-weight: $svtse_font-weight-normal;
+}
+
+@mixin svtse_typography-raw-mq-alt_30_40_bc {
+	@include _font-size(30, 40);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-bold;
+}
+
+/*
+   Raw size: 24 / 28
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-raw_24_28_b {
+	@include _font-base(24, 28);
+	font-weight: $svtse_font-weight-bold;
+}
+
+@mixin svtse_typography-raw_24_28_b_inverted {
+	@include _font-base(24, 28, true);
+	font-weight: $svtse_font-weight-bold;
+}
+
+@mixin svtse_typography-raw_24_28_bc {
+	@include _font-base(24, 28);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-bold;
+}
+
+@mixin svtse_typography_20_28 {
+	@include _font-base(20, 28);
+	font-weight: $svtse_font-weight-normal;
+}
+
+@mixin svtse_typography_20_28_b {
+	@include _font-base(20, 28);
+	font-weight: $svtse_font-weight-bold;
+}
+
+/*
+   Raw size: 20 / 24
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-raw_20_24 {
+	@include _font-base(20, 24);
+	font-weight: $svtse_font-weight-normal;
+}
+
+@mixin svtse_typography-raw_20_24_inverted {
+	@include _font-base(20, 24, true);
+	font-weight: $svtse_font-weight-normal;
+}
+
+@mixin svtse_typography-raw_20_24_b {
+	@include _font-base(20, 24);
+	font-weight: $svtse_font-weight-bold;
+}
+
+@mixin svtse_typography-raw_20_24_bc {
+	@include _font-base(20, 24);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-bold;
+}
+
+@mixin svtse_typography-raw_20_24_b_inverted {
+	@include _font-base(20, 24, true);
+	font-weight: $svtse_font-weight-bold;
+}
+
+@mixin svtse_typography-raw_20_24_c {
+	@include _font-base(20, 24);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-normal;
+}
+
+@mixin svtse_typography-raw_20_24_bc_inverted {
+	@include _font-base(20, 24, true);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-bold;
+}
+
+/*
+   Raw size: 15 / 20
+   -------------------------------------------------------------------------- */
+$_size: 16;
+$_lh: 22;
+
+@mixin svtse_typography-raw_15_20 {
+	@include _font-base($_size, $_lh);
+	font-weight: $svtse_font-weight-normal;
+
+	@include svt_mq-gte-small {
+		@include _font-size(15, 20);
+	}
+}
+
+@mixin svtse_typography-raw_15_20_l {
+	@include _font-base($_size, $_lh);
+	font-weight: $svtse_font-weight-light;
+
+
+	@include svt_mq-gte-small {
+		@include _font-size(15, 20);
+	}
+}
+
+@mixin svtse_typography-raw_15_20_b {
+	@include _font-base($_size, $_lh);
+	font-weight: $svtse_font-weight-bold;
+
+	@include svt_mq-gte-small {
+		@include _font-size(15, 20);
+	}
+}
+
+@mixin svtse_typography-raw_15_20_b_inverted {
+	@include _font-base($_size, $_lh, true);
+	font-weight: $svtse_font-weight-bold;
+
+	@include svt_mq-gte-small {
+		@include _font-size(15, 20);
+	}
+}
+
+@mixin svtse_typography-raw_15_20_c {
+	@include _font-base($_size, $_lh);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-normal;
+
+	@include svt_mq-gte-small {
+		@include _font-size(15, 20);
+	}
+}
+
+@mixin svtse_typography-raw_15_20_c_inverted {
+	@include _font-base($_size, $_lh, true);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-normal;
+
+	@include svt_mq-gte-small {
+		@include _font-size(15, 20);
+	}
+}
+
+@mixin svtse_typography-raw_15_20_bc {
+	@include _font-base($_size, $_lh);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-bold;
+
+	@include svt_mq-gte-small {
+		@include _font-size(15, 20);
+	}
+}
+
+@mixin svtse_typography-raw_15_20_bc {
+	@include _font-base($_size, $_lh);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-bold;
+
+	@include svt_mq-gte-small {
+		@include _font-size(15, 20);
+	}
+}
+
+@mixin svtse_typography-raw_15_20_bc_inverted {
+	@include _font-base($_size, $_lh, true);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-bold;
+
+	@include svt_mq-gte-small {
+		@include _font-size(15, 20);
+	}
+}
+
+/*
+   Raw size: 16 / 20
+   -------------------------------------------------------------------------- */
+
+// OBS! this should only be used for input fields since we cannot use font size < 16 due to iOS bugs.
+@mixin svtse_typography-raw_16_20 {
+	@include _font-base(16, 20);
+	font-weight: $svtse_font-weight-normal;
+}
+
+/*
+   Raw size: 12 / 20
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-raw_12_20_b {
+	@include _font-base(12, 20);
+	font-weight: $svtse_font-weight-bold;
+}
+
+@mixin svtse_typography-raw_12_20_b_inverted {
+	@include _font-base(12, 20, true);
+	font-weight: $svtse_font-weight-bold;
+}
+
+@mixin svtse_typography-raw_12_20_c {
+	@include _font-base(12, 20);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-normal;
+}
+
+@mixin svtse_typography-raw_12_20_bc {
+	@include _font-base(12, 20);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-bold;
+}
+
+/*
+   Raw size: custom (for lab purposes)
+   -------------------------------------------------------------------------- */
+
+@mixin _typography_internal_custom($size, $lineheight) {
+	@include _font-base($size, $lineheight);
+	font-weight: $svtse_font-weight-normal;
+}
+
+@mixin _typography_internal_custom_inverted($size, $lineheight) {
+	@include _font-base($size, $lineheight, true);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-normal;
+}
+
+@mixin _typography_internal_custom_b($size, $lineheight) {
+	@include _font-base($size, $lineheight);
+	font-weight: $svtse_font-weight-bold;
+}
+
+@mixin _typography_internal_custom_b_inverted($size, $lineheight) {
+	@include _font-base($size, $lineheight, true);
+	font-weight: $svtse_font-weight-bold;
+}
+
+@mixin _typography_internal_custom_c($size, $lineheight) {
+	@include _font-base($size, $lineheight);
+	font-weight: $svtse_font-weight-normal;
+}
+
+@mixin _typography_internal_custom_c_inverted($size, $lineheight) {
+	@include _font-base($size, $lineheight, true);
+	font-weight: $svtse_font-weight-normal;
+}
+
+@mixin _typography_internal_custom_bc($size, $lineheight) {
+	@include _font-base($size, $lineheight);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-bold;
+}
+
+@mixin _typography_internal_custom_bc_inverted($size, $lineheight) {
+	@include _font-base($size, $lineheight, true);
+	@include _uppercase();
+	font-weight: $svtse_font-weight-bold;
+}
+
+
+
+
+/* ==========================================================================
+   Named Typography Mixins
+   ========================================================================== */
+
+/*
+   Display
+   ========================================================================== */
+
+/*
+   Display - Normal
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-display-normal {
+	@include svtse_typography-raw-mq-alt_30_40_b();
+	/*
+	@include svt_mq-gte-small {
+		@include svtse_typography-raw_40_46_b();
+	}
+	*/
+
+}
+
+@mixin svtse_typography-display-normal--label {
+	@include svtse_typography-raw-mq-alt_30_40_bc();
+
+	/*
+	@include svt_mq-gte-small {
+		@include svtse_typography-raw_40_46_bc();
+	}
+	*/
+}
+
+/*
+   Display - Medium 1
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-display-medium1 {
+	@include svtse_typography-raw_24_28_b();
+}
+
+@mixin svtse_typography-display-medium1--inverted {
+	@include svtse_typography-raw_24_28_b_inverted();
+}
+
+@mixin svtse_typography-display-medium1--label {
+	@include svtse_typography-raw_24_28_bc();
+}
+
+/*
+   Display - Medium 2
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-display-medium2 {
+	@include svtse_typography-raw_20_24_b();
+}
+
+@mixin svtse_typography-display-medium2--inverted {
+	@include svtse_typography-raw_20_24_b_inverted();
+}
+
+@mixin svtse_typography-display-medium2--label {
+	@include svtse_typography-raw_20_24_bc();
+}
+
+@mixin svtse_typography-display-medium2--label-inverted {
+	@include svtse_typography-raw_20_24_bc_inverted();
+}
+
+/*
+   Display - Small
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-display-small {
+	@include svtse_typography-raw_15_20_b();
+}
+
+@mixin svtse_typography-display-small--inverted {
+	@include svtse_typography-raw_15_20_b_inverted();
+}
+
+@mixin svtse_typography-display-small--label {
+	@include svtse_typography-raw_15_20_bc();
+}
+
+@mixin svtse_typography-display-small--label-inverted {
+	@include svtse_typography-raw_15_20_bc_inverted();
+}
+
+/*
+   Read
+   ========================================================================== */
+
+/*
+   Read - Normal
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-read-normal {
+	@include svtse_typography_20_28();
+}
+
+@mixin svtse_typography-read-normal--em {
+	@include svtse_typography_20_28_b();
+}
+
+/*
+   Read - Small
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-read-small {
+	@include svtse_typography-raw_15_20();
+}
+
+@mixin svtse_typography-read-small--em {
+	@include svtse_typography-raw_15_20_b();
+}
+
+@mixin svtse_typography-read-small--label {
+	@include svtse_typography-raw_15_20_bc();
+}
+
+/*
+   Meta
+   ========================================================================== */
+
+/*
+   Meta - Normal
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-meta-normal {
+	@include svtse_typography-raw_15_20();
+}
+
+@mixin svtse_typography-meta-normal--discreet {
+	@include svtse_typography-raw_15_20_l();
+}
+
+@mixin svtse_typography-meta-normal--em {
+	@include svtse_typography-raw_15_20_b();
+}
+
+
+/*
+   Meta - Small
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-meta--small {
+	@include svtse_typography-raw_12_20_b();
+}
+
+@mixin svtse_typography-meta--small-inverted {
+	@include svtse_typography-raw_12_20_b_inverted();
+}
+
+/*
+   Item
+   ========================================================================== */
+
+/*
+   Item - Normal 1 (Always Caps)
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-item-normal1 {
+	@include svtse_typography-raw_15_20_c();
+}
+
+@mixin svtse_typography-item-normal1--em {
+	@include svtse_typography-raw_15_20_bc();
+}
+
+@mixin svtse_typography-item-normal1--em-inverted {
+	@include svtse_typography-raw_15_20_bc_inverted();
+}
+
+@mixin svtse_typography-item-normal1--inverted {
+	@include svtse_typography-raw_15_20_c_inverted();
+}
+
+/*
+   Item - Normal 2 (No Caps)
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-item-normal2 {
+	@include svtse_typography-raw_15_20();
+}
+
+@mixin svtse_typography-item-normal2--em {
+	@include svtse_typography-raw_15_20_b();
+}
+
+/*
+   Item - Large 1 (Always Caps)
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-item-large1 {
+	@include svtse_typography-raw_20_24_c();
+}
+
+@mixin svtse_typography-item-large1--em {
+	@include svtse_typography-raw_20_24_bc();
+}
+
+/*
+   Item - Large 2 (No Caps)
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-item-large2 {
+	@include svtse_typography-raw_20_24();
+}
+
+
+/*
+   Item - Small (Always Caps)
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-item-small1 {
+	@include svtse_typography-raw_12_20_c();
+}
+
+@mixin svtse_typography-item-small1--em {
+	@include svtse_typography-raw_12_20_bc();
+}
+
+/* Controls
+   ========================================================================== */
+
+/*
+   Controls - Input
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-controls-input {
+	@include svtse_typography-raw_16_20();
+}
+
+/*
+   Controls - Button - Normal
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-controls-button-normal {
+	@include svtse_typography-raw_15_20_bc();
+}
+
+
+/*
+   Controls - Button - Small
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_typography-controls-button-small {
+	@include svtse_typography-raw_12_20_bc();
+}
+
+/* ==========================================================================
+   Link Decorations for Articles and Programs
+   ========================================================================== */
+
+@mixin svtse_text-decorations-inline-links($color: $svtse_color-text-normal, $color-decoration: $svtse_color-light-blue, $position: -5px) {
+
+	text-decoration: none;
+	transition: background-color 0.5s;
+
+	color: $color;
+
+	border-bottom: 3px solid $color-decoration;
+	box-shadow: inset 0 0 0 $color-decoration, inset 0 $position 0 $color-decoration;
+
+	&:hover {
+		transition: background-color 0.3s;
+		background-color: $color-decoration;
+	}
+
+	&:focus {
+		outline: 2px solid $svtse_color-focus-outline-default;
+	}
+}
+
+@mixin svtse_text-decorations-inline-links-largertext($color:  $svtse_color-text-normal, $color-decoration: $svtse_color-light-blue) {
+	@include svtse_text-decorations-inline-links($color, $color-decoration, -6px)
+}

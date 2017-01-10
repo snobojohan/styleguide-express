@@ -1,0 +1,54 @@
+/* Use this file for importing to SASS. */
+
+$svtlib-icons-fontPath: 'fonts' !default;
+
+@import "svt-icons";
+
+@mixin svt_icon-rotate($deg:360deg) {
+	-webkit-transform: rotate($deg);
+	-moz-transform: rotate($deg);
+	-o-transform: rotate($deg);
+	transform: rotate($deg);
+} 
+
+.svt_icon {
+	vertical-align: baseline;
+}
+
+.svt_icon--align-top {
+	vertical-align: top;
+}
+
+.svt_icon--align-middle {
+	vertical-align: middle;
+}
+
+.svt_icon--rotate-90 {
+	@include svt_icon-rotate(90deg);
+}
+
+.svt_icon--rotate-180 {
+	@include svt_icon-rotate(180deg);
+}
+
+.svt_icon--rotate-270 {
+	@include svt_icon-rotate(270deg);
+}
+
+.svt_icon--fw-small {
+	width: 1em;
+}
+
+.svt_icon--fw-medium {
+	width: 1.5em;
+}
+
+.svt_icon--fw-large {
+	width: 2em;
+}
+
+@for $i from 1 through 5 {
+	.svt_icon--#{$i}x {
+		font-size: #{$i}em;	
+	}
+}

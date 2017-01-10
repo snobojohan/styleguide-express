@@ -1,11 +1,19 @@
-<h1>{{activePost.title}}</h1>
+<div class="svti_post">
+	<div class="svti_post__area">
 
-<p>{{{markdown activePost.body }}}</p>
+		<h1>{{activePost.title}}</h1>
 
-<h2>Do</h2>
-<p>{{{ activePost.dos }}}</p>
+		<div class="svti_markdown">
+			{{{markdown activePost.body }}}
+		</div>
 
-<h2>Don't</h2>
-<p>{{ activePost.donts }}</p>
+		<h2>Do</h2>
+		<p>{{{ activePost.dos }}}</p>
 
-<div>{{ activePost.html }}</div>
+		<h2>Don't</h2>
+		<p>{{ activePost.donts }}</p>
+
+		<div>{{ activePost.html }}</div>
+
+	</div>
+</div>

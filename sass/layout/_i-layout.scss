@@ -1,0 +1,270 @@
+/* Helpful mixins for basic layout tasks.
+   ========================================================================== */
+
+/*
+ * OBS!
+ *
+ * In order to get the container and grid mixin's to play well together the document structure has to
+ * be the following.
+ *
+ * <container>
+ *  <grid-container>
+ *    <grid-column/>
+ *    ...
+ *  </grid-container>
+ * </container>
+ *
+ * The important part is that the container mixin and the grid container mixin should never
+ * be used on the same element since they have conflicting properties.
+ */
+
+/* Container related mixins
+   ========================================================================== */
+
+$_small-max-width: 800px;
+$_medium-max-width: 1024px;
+$_large-max-width: 1200px;
+
+
+@mixin svti_content-container {
+	@include svt_clearfix();
+
+	max-width: $_small-max-width;
+	margin: 0 auto;
+	padding: 0 $svtse-grid-gutter-width;
+
+	@include svt_mq-gte-small {
+		padding-right: 1em;
+		padding-left: 1em;
+	}
+
+	/*
+	@include svt_mq-gte-medium {
+		padding-right: 2em;
+		padding-left: 2em;
+	}
+	*/
+
+	@include svt_mq-gte-medium {
+		max-width: $_large-max-width;
+	}
+}
+
+@mixin svti_content-container--query {
+	@include svt_clearfix();
+
+	@include svt_mq-small {
+		max-width: $_small-max-width;
+		margin: 0 auto;
+		padding: 0 $svtse-grid-gutter-width;
+	}
+
+	@include svt_mq-gte-small {
+		margin: 0 auto;
+		padding-right: 1em;
+		padding-left: 1em;
+	}
+
+	@include svt_mq-gte-medium {
+		max-width: $_large-max-width;
+	}
+}
+
+@mixin svtse_content-container-large {
+	@include svt_clearfix();
+
+	max-width: $_medium-max-width;
+	margin: 0 auto;
+	padding: 0 $svtse-grid-gutter-width;
+
+	@include svt_mq-gte-medium {
+		max-width: $_large-max-width;
+	}
+}
+
+@mixin svtse_content-container-noclear {
+	max-width: $_small-max-width;
+	margin: 0 auto;
+	padding: 0 $svtse-grid-gutter-width;
+
+	@include svt_mq-gte-small {
+		padding-right: 2em;
+		padding-left: 2em;
+	}
+
+	@include svt_mq-gte-medium {
+		max-width: $_large-max-width;
+	}
+}
+
+
+/* Grid related mixins
+   ========================================================================== */
+
+/* min-height: 1px is used so columns doesn't collapse when they don't have any content */
+
+
+@mixin svtse_grid-container {
+	@include svt_clearfix();
+	margin-left: -$svtse-grid-gutter-width;
+}
+
+/*
+	Proposed name, in combination with replacing the content in svtse_grid-container()
+	with the content of svtse_content-container()
+*/
+@mixin svtse_grid-row {
+	@include svt_clearfix();
+
+	margin-left: -$svtse-grid-gutter-width;
+}
+
+/* 7 column grid
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_grid-col-1-of-7 {
+	padding-left: $svtse-grid-gutter-width;
+	width: 14%;
+	float: left;
+	min-height: 1px;
+}
+
+/* 5 column grid
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_grid-col-1-of-5 {
+	padding-left: $svtse-grid-gutter-width;
+	width: 20%;
+	float: left;
+	min-height: 1px;
+}
+
+@mixin svtse_grid-col-2-of-5 {
+	padding-left: $svtse-grid-gutter-width;
+	width: 40%;
+	float: left;
+	min-height: 1px;
+}
+
+@mixin svtse_grid-col-3-of-5 {
+	padding-left: $svtse-grid-gutter-width;
+	width: 60%;
+	float: left;
+	min-height: 1px;
+}
+
+@mixin svtse_grid-col-4-of-5 {
+	padding-left: $svtse-grid-gutter-width;
+	width: 80%;
+	float: left;
+	min-height: 1px;
+}
+
+
+@mixin svtse_grid_offset_1_of_5 {
+	margin-left: 20%;
+}
+
+@mixin svtse_grid_offset_2_of_5 {
+	margin-left: 40%;
+}
+
+@mixin svtse_grid_offset_3_of_5 {
+	margin-left: 60%;
+}
+
+@mixin svtse_grid_offset_4_of_5 {
+	margin-left: 80%;
+}
+
+/* 4 column grid
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_grid-col-1-of-4 {
+	padding-left: $svtse-grid-gutter-width;
+	width: 25%;
+	float: left;
+	min-height: 1px;
+}
+
+@mixin svtse_grid-col-2-of-4 {
+	padding-left: $svtse-grid-gutter-width;
+	width: 50%;
+	float: left;
+	min-height: 1px;
+}
+
+@mixin svtse_grid-col-3-of-4 {
+	padding-left: $svtse-grid-gutter-width;
+	width: 75%;
+	float: left;
+	min-height: 1px;
+}
+
+
+@mixin svtse_grid_offset_1_of_4 {
+	margin-left: 25%;
+}
+
+@mixin svtse_grid_offset_2_of_4 {
+	margin-left: 50%;
+}
+
+@mixin svtse_grid_offset_3_of_4 {
+	margin-left: 75%;
+}
+
+/* 3 column grid
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_grid-col-1-of-3 {
+	padding-left: $svtse-grid-gutter-width;
+	width: 33.33%;
+	float: left;
+	min-height: 1px;
+}
+
+@mixin svtse_grid-col-2-of-3 {
+	padding-left: $svtse-grid-gutter-width;
+	width: 66.67%;
+	float: left;
+	min-height: 1px;
+}
+
+
+@mixin svtse_grid_offset_1_of_3 {
+	margin-left: 33.33%;
+}
+
+@mixin svtse_grid_offset_2_of_3 {
+	margin-left: 66.67%;
+}
+
+/* 2 column grid
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_grid-col-1-of-2 {
+	padding-left: $svtse-grid-gutter-width;
+	width: 50%;
+	float: left;
+	min-height: 1px;
+}
+
+
+@mixin svtse_grid_offset_1_of_2 {
+	margin-left: 50%;
+}
+
+/* 1 column grid (only make sense in media queries)
+   -------------------------------------------------------------------------- */
+
+@mixin svtse_grid-col-1-of-1() {
+	padding-left: $svtse-grid-gutter-width;
+	width: 100%;
+	float: none;
+}
+
+
+@mixin svtse_grid_offset_0 {
+	margin-left: 0;
+}

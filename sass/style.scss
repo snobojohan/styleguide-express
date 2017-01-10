@@ -1,35 +1,41 @@
-body {
-  font-size: 16px;
-  font-family: sans-serif;
-  color: #222;
-  background: #FEFEFE;
-  padding: 50px;
-}
+/* BASE
+   ========================================================================== */
 
-a {
-  	color: #0074bd;
-	&:visited {
-		color: #0074bd;
-	}
-  	&:hover {
-    	color: #029bff;
-  	}
-}
+@import "base/i-core-variables";
+@import "base/i-colors";
+@import "base/i-measures";
+@import "base/i-typography";
+@import "base/i-breakpoints";
 
-.menu {
-  list-style-type: none;
-  li {
-    list-style-type: none;
-  }
+@import "base/normalize";
+@import "base/a11y";
 
-  a {
-
-	  text-decoration: none;
-	  &.active {
-		  font-weight: bold;
-	  }
+@import "base/boilerplate";
 
 
-  }
+/* HELPERS
+   ========================================================================== */
 
-}
+// @import "helpers/i-functions";
+@import "helpers/i-mixins";
+@import "helpers/i-media-queries";
+
+
+/* LAYOUT
+   ========================================================================== */
+@import "layout/media-block";
+@import "layout/i-layout";
+@import "layout/page";
+
+/* ICONS
+   ==========================================================================
+	TODO: This might be a reason to use CSSit, so that we get the latest and gratest icons
+ */
+@import "base/icons";
+
+
+/* FEATURES
+   ========================================================================== */
+@import "features/menu";
+@import "features/post";
+@import "features/markdown";

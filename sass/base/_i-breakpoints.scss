@@ -1,0 +1,22 @@
+@import "i-core-variables";
+
+/* ==========================================================================
+   Breakpoints
+   ========================================================================== */
+
+/**
+ * We are using em values for our breakpoints because we don't want the layout to break
+ * if the user are using browser text zoom.
+ */
+
+$svt_mq-breakpoint-max-XXS: (340 / $svt_font-base-size) + em;
+$svt_mq-breakpoint-min-XS: (341 / $svt_font-base-size) + em;
+$svt_mq-breakpoint-max-XS: (600 / $svt_font-base-size) + em;
+$svt_mq-breakpoint-min-S: (601 / $svt_font-base-size) + em;
+$svt_mq-breakpoint-max-S: (800 / $svt_font-base-size) + em;
+$svt_mq-breakpoint-min-M: (801 / $svt_font-base-size) + em;
+$svt_mq-breakpoint-max-M: (1024 / $svt_font-base-size) + em;
+$svt_mq-breakpoint-min-L: (1025 / $svt_font-base-size) + em;
+$svt_mq-breakpoint-max-L: (1280 / $svt_font-base-size) + em;
+$svt_mq-breakpoint-min-XL: (1281 / $svt_font-base-size) + em;
+

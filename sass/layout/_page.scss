@@ -1,0 +1,55 @@
+.svti_page {
+	// needed for "sticky" footer
+	height: 100%;
+
+	&__app,
+	&__app-full-height {
+		// needed for "sticky" footer
+		height: 100%;
+	}
+}
+
+
+// table-based implementation of "sticky" footer
+.svti_application {
+	display: table;
+	height: 100%;
+	width: 100%;
+
+	&__header-area {
+		display: table-row;
+		height: 1px;
+	}
+
+	&__main-area {
+		display: table-row;
+		height: 100%;
+		background-color: $svtse_color-white;
+		outline: none;
+	}
+
+	&__footer-area {
+		display: table-row;
+		height: 1px;
+	}
+
+	&__notification-area {
+		display: table-row;
+	}
+
+	&__z-index {
+		position: relative;
+
+		&--one {
+			z-index: 1;
+		}
+
+		&--two {
+			z-index: 2;
+		}
+
+		&--three {
+			z-index: 3;
+		}
+	}
+}

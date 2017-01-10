@@ -1,0 +1,33 @@
+.svt_mediablock__fig--svtse-small {
+	max-width: 110px;
+}
+
+.svtse_mediablock,
+.svtse_mediablock__text {
+	@include svt_clearfix();
+	overflow: hidden;
+}
+
+.svtse_mediablock__text {
+	padding-left: 1em;
+}
+
+.svtse_mediablock__fig {
+	float: left;
+}
+
+.svtse_mediablock__fig--15procent {
+	width: 15%;
+}
+
+.svtse_mediablock__fig--25procent {
+	width: 25%;
+}
+
+.svtse_mediablock__fig--33procent {
+	width: 33.33%;
+}
+
+.svtse_mediablock__img {
+	display: block;
+}

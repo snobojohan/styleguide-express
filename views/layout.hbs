@@ -2,10 +2,26 @@
 <html>
   <head>
     <title>{{title}}</title>
-    <link rel='stylesheet' href='/style.css' />
+		<link href="//www.svtstatic.se/resources/svtlib-font/base64-font-publik.min_3.css" rel="stylesheet" />
+    	<link rel='stylesheet' href='/style.css' />
   </head>
-  <body>
-    {{> menu}}
-    {{{body}}}
+  <body class="svti_page">
+ 	 <div class="svti_page__app">
+		 <div class="svti_page__app-full-height">
+			 <div class="svti_application">
+				 <div class="svti_application__header-area">
+					 {{> menu}}
+				 </div>
+				 <div class="svti_application__main-area">
+					 {{{body}}}
+				 </div>
+				 <div class="svti_application__footer-area">
+					 {{> footer}}
+				 </div>
+			 </div>
+
+
+		 </div>
+	 </div>
   </body>
 </html>

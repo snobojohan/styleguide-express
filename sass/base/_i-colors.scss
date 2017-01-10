@@ -1,0 +1,143 @@
+/* ==========================================================================
+   Colors for first page on svt.se
+   ========================================================================== */
+
+
+/* Colors from Essen
+   ========================================================================== */
+
+/* Deprecated - White to Black */
+
+
+/* White to Black from SVT Styleguide */
+$svtse_color-white              : #ffffff;
+$svtse_color-grey-4prc   		: #f0f0f0;
+$svtse_color-grey-10prc   		: #e5e5e5;
+$svtse_color-grey-20prc   		: #cccccc;
+$svtse_color-grey-30prc   		: #b3b3b3;
+$svtse_color-grey-40prc   		: #999999;
+$svtse_color-grey-50prc   		: #808080;
+$svtse_color-grey-60prc   		: #666666;
+$svtse_color-grey-70prc   		: #4d4d4d;
+$svtse_color-grey-80prc   		: #333333;
+$svtse_color-grey-90prc   		: #1a1a1a;
+$svtse_color-black              : #000000;
+
+
+/* Red */
+$svtse_color-extra-light-red    : #fcdde0;
+$svtse_color-light-red          : #f4abb2;
+$svtse_color-red                : #ee041b;
+$svtse_color-dark-red           : #a90213;
+$svtse_color-extra-dark-red     : #700500;
+
+/* Orange */
+$svtse_color-extra-light-orange : #fee8dd;
+$svtse_color-light-orange       : #f9c6ab;
+$svtse_color-orange             : #ff5a00;
+$svtse_color-dark-orange        : #b53f00;
+$svtse_color-extra-dark-orange  : #822000;
+
+/* Yellow */
+$svtse_color-extra-light-yellow : #fef5dd;
+$svtse_color-light-yellow       : #f9e3a2;
+$svtse_color-yellow             : #ffc300;
+$svtse_color-dark-yellow        : #cb9200;
+$svtse_color-extra-dark-yellow  : #7e5800;
+
+/* Green */
+$svtse_color-extra-light-green  : #ddf3dd;
+$svtse_color-light-green        : #a1d9a2;
+$svtse_color-green              : #00ad00;
+$svtse_color-dark-green         : #007a00;
+$svtse_color-extra-dark-green   : #005000;
+
+/* Blue */
+$svtse_color-extra-light-blue   : #ddeffb;
+$svtse_color-light-blue         : #aad6f2;
+$svtse_color-blue               : #008de9;
+$svtse_color-dark-blue          : #0064a5;
+$svtse_color-extra-dark-blue    : #00416d;
+
+/* Purple */
+$svtse_color-extra-light-purple : #f0ddf2;
+$svtse_color-light-purple       : #d7aade;
+$svtse_color-purple             : #9100a4;
+$svtse_color-dark-purple        : #64006f;
+$svtse_color-extra-dark-purple  : #420047;
+
+/* Pink */
+$svtse_color-extra-light-pink   : #fee9eb;
+$svtse_color-light-pink         : #f5bac2;
+$svtse_color-pink               : #ff5b6e;
+$svtse_color-dark-pink          : #b5404e;
+$svtse_color-extra-dark-pink    : #7f2933;
+
+$svtse_color-transparent		: transparent;
+
+
+/*
+   Standard Text Colors
+  ========================================================================== */
+
+$svtse_color-text-normal: $svtse_color-grey-90prc;
+$svtse_color-text-inverted: $svtse_color-grey-4prc;
+$svtse_color-text-brand: $svtse_color-purple;
+$svtse_color-text-play: $svtse_color-green;
+$svtse_color-text-kids: $svtse_color-light-blue;
+
+
+/* Global variables that use out primary colors
+   ========================================================================== */
+
+// Default link color
+$svtse_link-color: $svtse_color-dark-blue;
+$svtse_link-color-hover: $svtse_color-blue ;
+
+// Background color needed to get a nicer opacity effect on hover
+$svtse_img-bg-color: $svtse_color-black;
+
+// Focus
+$svtse_color-focus-outline-default: $svtse_color-black;
+
+// News default color
+$svtse_color-news-red: $svtse_color-red;
+
+// Sport default color
+$svtse_color-sport-blue: $svtse_color-dark-blue;
+
+
+$svtse_broadcast-text-color: $svtse_color-purple;
+
+
+// this color is deprecated and should only be used in context of the old header/footer
+$svtse_old-program-list-link-color: #0059b3;
+
+// Buttons
+$svtse_btn-color-normal: $svtse_color-black;
+$svtse_btn-color-normal-background: $svtse_color-white;
+$svtse_btn-color-normal-border: $svtse_color-black;
+
+$svtse_btn-color-hover: $svtse_color-black;
+$svtse_btn-color-hover-background: $svtse_color-white;
+$svtse_btn-color-hover-border: $svtse_color-black;
+
+$svtse_btn-color-selected-background: $svtse_color-grey-10prc;
+
+$svtse_btn-color-disabled: $svtse_color-white;
+$svtse_btn-color-disabled-background: $svtse_color-grey-20prc;
+$svtse_btn-color-disabled-border: $svtse_color-grey-20prc;
+
+$svtse_btn-color-focus: $svtse_color-black;
+$svtse_btn-color-focus-background: $svtse_color-white;
+$svtse_btn-color-focus-border: $svtse_color-black;
+
+$svtse_btn-color-active: $svtse_color-black;
+$svtse_btn-color-active-background: $svtse_color-white;
+$svtse_btn-color-active-border: $svtse_color-black;
+
+
+// hover effect color
+
+$svtse_image-hover-effect-color-base: rgba($svtse_color-purple, 0.3);
+$svtse_image-hover-effect-color-play: rgba($svtse_color-extra-dark-green, 0.5);
