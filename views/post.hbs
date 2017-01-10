@@ -1,19 +1,28 @@
 <div class="svti_post">
 	<div class="svti_post__area">
 
-		<h1>{{activePost.title}}</h1>
+		<div class="svti_post__grid-row">
 
-		<div class="svti_markdown">
-			{{{markdown activePost.body }}}
+			<div class="svti_post__main-column">
+				<h1>{{activePost.title}}</h1>
+
+				<div class="svti_markdown">
+					{{{markdown activePost.body }}}
+				</div>
+
+			</div>
+
+			<div class="svti_post__secondary-column">
+
+				<h2>Do</h2>
+				<p>{{{ activePost.dos }}}</p>
+
+				<h2>Don't</h2>
+				<p>{{ activePost.donts }}</p>
+
+				<div>{{ activePost.html }}</div>
+
+			</div>
 		</div>
-
-		<h2>Do</h2>
-		<p>{{{ activePost.dos }}}</p>
-
-		<h2>Don't</h2>
-		<p>{{ activePost.donts }}</p>
-
-		<div>{{ activePost.html }}</div>
-
 	</div>
 </div>

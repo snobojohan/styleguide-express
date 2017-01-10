@@ -1,0 +1,20 @@
+.svti_markdown {
+	h1 {
+		@include svtse_typography-display-normal;
+	}
+	h2 {
+		@include svtse_typography-display-medium1;
+	}
+	h3 {
+		@include svtse_typography-display-medium2;
+	}
+
+	p {
+		@include svtse_typography-read-normal;
+		margin: 0.5em 0;
+	}
+
+	li {
+		@include svtse_typography-read-normal;
+	}
+}

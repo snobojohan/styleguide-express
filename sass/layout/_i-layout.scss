@@ -115,7 +115,6 @@ $_large-max-width: 1200px;
 */
 @mixin svtse_grid-row {
 	@include svt_clearfix();
-
 	margin-left: -$svtse-grid-gutter-width;
 }
 
