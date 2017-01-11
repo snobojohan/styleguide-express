@@ -36,21 +36,27 @@ $_large-max-width: 1200px;
 	@include svt_mq-gte-small {
 		padding-right: 1em;
 		padding-left: 1em;
+		margin-left: auto;
+		margin-right: auto;
 	}
-
-	/*
-	@include svt_mq-gte-medium {
-		padding-right: 2em;
-		padding-left: 2em;
-	}
-	*/
 
 	@include svt_mq-gte-medium {
 		max-width: $_large-max-width;
+		margin-left: auto;
+		margin-right: auto;
 	}
 }
 
+@mixin svti_content-container--margin {
+
+	@include svti_content-container;
+
+	margin: 0 1em;
+
+}
+
 @mixin svti_content-container--query {
+
 	@include svt_clearfix();
 
 	@include svt_mq-small {
@@ -115,7 +121,11 @@ $_large-max-width: 1200px;
 */
 @mixin svtse_grid-row {
 	@include svt_clearfix();
+	box-sizing: border-box;
 	margin-left: -$svtse-grid-gutter-width;
+	div, article, nav {
+
+	}
 }
 
 /* 7 column grid

@@ -4,7 +4,7 @@
 		<div class="svti_post__grid-row">
 
 			<div class="svti_post__main-column">
-				<h1>{{activePost.title}}</h1>
+				<!--h1>{{activePost.title}}</h1 -->
 
 				<div class="svti_markdown">
 					{{{markdown activePost.body }}}
@@ -13,14 +13,15 @@
 			</div>
 
 			<div class="svti_post__secondary-column">
+				<aside class="svti_post__aside">
+					<h2>Do</h2>
+					<p>{{{ activePost.dos }}}</p>
 
-				<h2>Do</h2>
-				<p>{{{ activePost.dos }}}</p>
+					<h2>Don't</h2>
+					<p>{{ activePost.donts }}</p>
 
-				<h2>Don't</h2>
-				<p>{{ activePost.donts }}</p>
-
-				<div>{{ activePost.html }}</div>
+					<div>{{ activePost.html }}</div>
+				</aside>
 
 			</div>
 		</div>

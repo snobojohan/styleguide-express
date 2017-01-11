@@ -1,4 +1,12 @@
 .svti_markdown {
+	@include svtse_typography-read-normal;
+
+	h1, h2, h3 {
+		margin-top: 1em;
+	}
+	h1:first-child, h2:first-child, h3:first-child {
+		margin-top: 0;
+	}
 	h1 {
 		@include svtse_typography-display-normal;
 	}
@@ -6,15 +14,25 @@
 		@include svtse_typography-display-medium1;
 	}
 	h3 {
-		@include svtse_typography-display-medium2;
+		@include svtse_typography-display-small--label;
 	}
 
 	p {
-		@include svtse_typography-read-normal;
 		margin: 0.5em 0;
 	}
 
-	li {
-		@include svtse_typography-read-normal;
+	ul, ol, li {
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+	}
+
+
+	blockquote {
+
+		@include svtse_typography-read_small;
+
+
+		border-left: 4px solid $svtse_color-grey-40prc;
+		padding: 0.5em 1em;
 	}
 }

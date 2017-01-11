@@ -562,3 +562,11 @@ input[type="search"] {
 	box-sizing: border-box;
 	-webkit-appearance: none;
 }
+
+// https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}

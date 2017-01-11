@@ -1,38 +1,67 @@
 .svti_post {
 
 	&__area {
-		@include svti_content-container();
+		@include svti_content-container--margin;
 	}
 
 	&__grid-row {
-		box-sizing: border-box;
+		margin: 3em 0;
 		@include svtse_grid-row;
 	}
 
 	&__main-column {
-		box-sizing: border-box;
 
-
-		@include svt_mq-small {
+		@include svt_mq-small-medium {
 			@include svtse_grid-col-2-of-3;
 		}
 
-		@include svt_mq-gte-medium {
-			@include svtse_grid-col-4-of-5;
+		@include svt_mq-gte-large {
+			@include svtse_grid-col-3-of-4;
 		}
 
 
 	}
 
 	&__secondary-column {
-		box-sizing: border-box;
-		@include svt_mq-small {
+
+		@include svt_mq-small-medium {
 			@include svtse_grid-col-1-of-3;
 		}
 
-		@include svt_mq-gte-medium {
-			@include svtse_grid-col-1-of-5;
+		@include svt_mq-gte-large {
+			@include svtse_grid-col-1-of-4;
 		}
+	}
+
+	&__aside {
+		@include svtse_typography-read_small;
+
+		h1, h2, h3 {
+			margin-top: 1em;
+		}
+		h1:first-child, h2:first-child, h3:first-child {
+			margin-top: 0;
+		}
+
+		h1 {
+			@include svtse_typography-display-medium2
+		}
+		h2 {
+			@include svtse_typography-display-medium2
+		}
+		h3 {
+			@include svtse_typography-display-small--label;
+		}
+
+		p {
+			margin: 0.5em 0;
+		}
+
+		ul, ol, li {
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+		}
+
 	}
 
 }

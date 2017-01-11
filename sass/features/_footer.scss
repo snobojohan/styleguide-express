@@ -1,0 +1,20 @@
+.svti_footer {
+	position: inherit;
+	margin: $svtse_vertical-divider--medium 0;
+	padding: $svtse_vertical-divider--small 0;
+	min-height: 40px;
+	border-top: 1px solid $svtse_color-grey-4prc;
+
+	@include svt_mq-gte-small {
+		padding-top: $svtse_vertical-divider--medium;
+
+	}
+
+	@media print {
+		display: none;
+	}
+
+	&__area {
+		@include svti_content-container--margin();
+	}
+}
