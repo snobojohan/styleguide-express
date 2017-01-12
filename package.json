@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "generate": "node build.js"
   },
   "config": {
     "accessToken": "2d99eaea9ddc9b833b8388f677389bb078d2fbdc2da89712f365123081e791e7",
@@ -12,6 +13,7 @@
   "dependencies": {
     "body-parser": "~1.15.2",
     "contentful": "^3.8.0",
+    "contentful-metalsmith": "^0.8.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "express": "~4.14.0",
@@ -19,10 +21,19 @@
     "hbs-utils": "0.0.4",
     "helper-markdown": "^0.2.1",
     "highlight.js": "^9.7.0",
+    "metalsmith": "^2.3.0",
+    "metalsmith-assets": "^0.1.0",
+    "metalsmith-clean": "0.0.0",
+    "metalsmith-data-markdown": "0.0.3",
+    "metalsmith-drafts": "0.0.1",
+    "metalsmith-layouts": "^1.7.0",
+    "metalsmith-markdown": "^0.2.1",
+    "metalsmith-sass": "^1.4.0",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
-    "node-sass-middleware": "^0.9.8"
+    "node-sass-middleware": "^0.9.8",
+    "nodemon": "^1.11.0"
   }
 }

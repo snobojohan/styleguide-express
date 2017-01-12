@@ -1,0 +1,54 @@
+<div class="svti_post">
+	<div class="svti_post__area">
+
+		<div class="svti_post__grid-row">
+
+			<div class="svti_post__main-column">
+				<!--h1>{{activePost.title}}</h1 -->
+
+				<div class="tmp-title">
+					{{ data.fields.title }}
+				</div>
+				<div class="tmp-body">
+					{{ data.fields.body }}
+				</div>
+				<div class="tmp-files">
+					{{ data.fields.attachedFiles }}
+				</div>
+
+
+				<div class="svti_markdown">
+					{{#each activePost.bodyList}}
+		        {{#if isHtml}}
+		          {{{ content }}}
+		        {{else}}
+		          <div>{{{ markdown content }}}</div>
+		        {{/if}}
+		      {{/each}}
+				</div>
+
+			</div>
+
+			<div class="svti_post__secondary-column">
+				<aside class="svti_post__aside">
+
+					<h2>Do</h2>
+					<p class="tmp-dos">
+						{{ data.fields.dos }}
+					</p>
+
+					<p>{{{ activePost.dos }}}</p>
+
+					<h2>Don't</h2>
+					<p class="tmp-donts">
+						{{ data.fields.donts }}
+					</p>
+					<p>{{ activePost.donts }}</p>
+
+					<div>{{ activePost.html }}</div>
+				</aside>
+
+			</div>
+		</div>
+	</div>
+</div>

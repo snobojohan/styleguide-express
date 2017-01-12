@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link href="//www.svtstatic.se/resources/svtlib-font/base64-font-publik.min_3.css" rel="stylesheet" />
+      <link rel='stylesheet' href='/style.css' />
+      <!-- link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css" / -->
+  </head>
+  <body class="svti_page">
+   <div class="svti_page__app">
+     <div class="svti_page__app-full-height">
+       <div class="svti_application">
+         <div class="svti_application__header-area">
+         </div>
+         <div class="svti_application__main-area">
+           <ul>
+            {{#each data.entries}}
+              <li>
+                  <a href="{{ _fileName }}">{{ fields.title }}</a>
+              </li>
+            {{/each}}
+          </ul>
+         </div>
+         <div class="svti_application__footer-area">
+         </div>
+       </div>
+     </div>
+   </div>
+  </body>
+</html>
