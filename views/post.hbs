@@ -7,7 +7,13 @@
 				<!--h1>{{activePost.title}}</h1 -->
 
 				<div class="svti_markdown">
-					{{{markdown activePost.body }}}
+					{{#each activePost.bodyList}}
+		        {{#if isHtml}}
+		          {{{ content }}}
+		        {{else}}
+		          <div>{{{ markdown content }}}</div>
+		        {{/if}}
+		      {{/each}}
 				</div>
 
 			</div>
