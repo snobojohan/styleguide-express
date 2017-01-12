@@ -4,10 +4,11 @@ var express = require('express'),
     favicon = require('serve-favicon'),
     logger  = require('morgan'),
     cookieParser = require('cookie-parser'),
-    bodyParser    = require('body-parser'),
+    bodyParser   = require('body-parser'),
     hbs = require('hbs'),
     hbsutils = require('hbs-utils')(hbs),
-    markdown = require('helper-markdown');
+    markdown = require('helper-markdown'),
+    hljs     = require('highlight.js');
 
 // Routes
 var routes = require('./routes/index');
@@ -25,8 +26,25 @@ hbs.registerHelper('printMenu', function( menu,options) {
   return new hbs.SafeString(result);
 });
 
+// Highlighter function. Should return escaped HTML,
+// or '' if input not changed
+function highlight(str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+        try {
+            return hljs.highlight(lang, str).value;
+        } catch (__) {}
+    }
+
+    try {
+        return hljs.highlightAuto(str).value;
+    } catch (__) {}
+
+    return ''; // use external default escaping
+}
+
 hbs.registerHelper('markdown', markdown({
-    html: true
+    html: true,
+    highlight: highlight
 }));
 
 app.use(
