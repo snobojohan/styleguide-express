@@ -6,7 +6,8 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     bodyParser    = require('body-parser'),
     hbs = require('hbs'),
-    hbsutils = require('hbs-utils')(hbs);
+    hbsutils = require('hbs-utils')(hbs),
+    markdown = require('helper-markdown');
 
 // Routes
 var routes = require('./routes/index');
@@ -24,8 +25,9 @@ hbs.registerHelper('printMenu', function( menu,options) {
   return new hbs.SafeString(result);
 });
 
-// hbs.registerHelper('markdown');
-hbs.registerHelper('markdown', require('helper-markdown'));
+hbs.registerHelper('markdown', markdown({
+    html: true
+}));
 
 app.use(
   favicon(path.join(__dirname, 'public', 'favicon.ico'))

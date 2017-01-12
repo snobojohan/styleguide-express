@@ -3,12 +3,29 @@ var contentHandler = require('../services/index');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.param('/', function(req, res, next) {
+
+    // TODO: HERE
+    contentHandler.getContent()
+        .then(
+            function(content){
+
+                console.log("C",content);
+
+                req.menu = contentHandler.getMenu(content);
+                next();
+            }
+        )
+        .catch(function (err) {
+            console.log("ERROR: ",err)
+            next()
+        })
+
 });
 
-router.get('/about', function(req, res, next) {
-  res.render('index', { title: 'About styleguide' });
+router.get('/', function(req, res, next) {
+    console.log("-->",req.menu);
+  res.render('index', { globalMenu: req.menu });
 });
 
 
@@ -41,6 +58,7 @@ router.param('post', function(req, res, next, post) {
   contentHandler.getContent()
     .then(
       function(content){
+
         req.menu = contentHandler.getMenu( content, post);
 
         req.post = contentHandler.getPost( content, post );

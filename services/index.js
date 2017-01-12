@@ -10,6 +10,9 @@ function getContent () {
 
 function getMenu(entries, postSlug){
 
+    entries = entries || {};
+    postSlug = postSlug || '';
+
   var tempParent;
 
   function activePost(item) {
