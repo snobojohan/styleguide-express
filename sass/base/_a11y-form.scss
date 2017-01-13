@@ -1,0 +1,59 @@
+%a11y-textinput {
+	width: 100%;
+	-webkit-appearance: none !important;
+	-moz-appearance: none;
+	appearance: none;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	font-size: 1rem;
+	line-height: 1.25;
+	border: none;
+	background-color: $svtse_color-grey-10prc;
+	border: 2px solid $svtse_color-grey-10prc;
+	color: $svtse_color-black;
+	border-radius: 3em;
+	padding: 0.5em 2.5em 0.5em 1em;
+
+	&:hover {
+		border-color: $svtse_color-grey-50prc;
+		outline: none;
+	}
+
+	&:focus {
+		border-color: $svtse_color-grey-30prc;
+		background-color: #FFF;
+		outline: none;
+	}
+}
+
+%a11y-submit {
+	position: absolute;
+	display: inline-block;
+	border: none;
+	background: none;
+	top: 3px;
+	right: 0.2em;
+	font-size: 28px;
+	font-size: 1.75rem;
+	line-height: 1;
+	padding-top: 2px;
+	padding-right: 5px;
+	text-decoration: none;
+
+	&:focus {
+		@extend %a11y-focus-outline;
+		outline-color: $svtse_color-grey-50prc !important;
+	}
+}
+
+%a11y-submit-icon {
+	vertical-align: top;
+	color: $svtse_color-grey-50prc;
+	font-size: 28px;
+	font-size: 1.75rem;
+	-webkit-font-smoothing: antialiased;
+
+	&:hover {
+		color: $svtse_color-grey-70prc;
+	}
+}

@@ -12,8 +12,9 @@ var express = require('express'),
 
 // Routes
 var routes = require('./routes/index');
-
 var app = express();
+
+global.appRoot = path.resolve(__dirname);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -64,10 +65,10 @@ app.use(sassMiddleware({
     outputStyle: 'compressed'
 }));
 
-app.use(
-    express.static(path.join(__dirname, 'public'))
-);
-
+app.use('/img',express.static(path.join(__dirname, 'public/images')));
+app.use('/js',express.static(path.join(__dirname, 'public/javascripts')));
+app.use('/assets',express.static(path.join(__dirname, 'public/assets')));
+app.use('/css',express.static(path.join(__dirname, 'public')));
 
 
 //  Connect all our routes to our application

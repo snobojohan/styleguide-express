@@ -9,9 +9,9 @@
 				<div class="svti_markdown">
 					{{#each activePost.bodyList}}
 		        {{#if isHtml}}
-		          {{{ content }}}
+		          <div class="svti_included-html">{{{ content }}}</div>
 		        {{else}}
-		          <div>{{{ markdown content }}}</div>
+		          {{{ markdown content }}}
 		        {{/if}}
 		      {{/each}}
 				</div>

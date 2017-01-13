@@ -1,6 +1,8 @@
 var express = require('express');
 var contentHandler = require('../services/index');
 var router = express.Router();
+var fs = require('fs');
+var path    = require('path');
 
 /* GET home page. */
 router.param('/', function(req, res, next) {
@@ -9,8 +11,6 @@ router.param('/', function(req, res, next) {
     contentHandler.getContent()
         .then(
             function(content){
-
-                console.log("C",content);
 
                 req.menu = contentHandler.getMenu(content);
                 next();
@@ -24,7 +24,6 @@ router.param('/', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-    console.log("-->",req.menu);
   res.render('index', { globalMenu: req.menu });
 });
 
@@ -57,24 +56,59 @@ function parseBodyObject(body) {
   /* If the recursive function finds an html-block it expects to parse a regular
      text-block and an html-block. */
   function recParser(rest, bodyList) {
-    if (!rest || !rest.length) { return bodyList; }
+
+    console.log("-------------------------------");
+    console.log("rest: ", rest);
+
+    if (!rest || !rest.length) {
+      return bodyList;
+    }
+
     var parsedChars = 0;
-    var splitted = rest.split('<html-block>', 2);
+    var splitted = rest.split('<html-include>', 2);
+
+    console.log('..................')
+    console.log(splitted)
+    console.log('..................')
+
     bodyList.push({
       content: splitted[0]
     });
-    if (!rest.includes('<html-block>') || !rest.includes('</html-block>')) { return bodyList; }
+
+    if (!rest.includes('<html-include>') || !rest.includes('</html-include>')) {
+      return bodyList;
+    }
+
     parsedChars += splitted[0].length;
     splitted.shift();
-    var htmlContent = splitted.join('').split('</html-block>')[0];
-    bodyList.push({
-      content: htmlContent,
-      isHtml: true
-    });
-    parsedChars += '<html-block></html-block>'.length + htmlContent.length;
+
+    var fileName = splitted.join('').split('</html-include>')[0];
+    var file = global.appRoot + "/content/" + splitted.join('').split('</html-include>')[0];
+    var htmlContent = "";
+    try {
+      htmlContent = fs.readFileSync(file, 'utf8');
+    } catch (err) {
+      console.log("ERROR: ",err)
+    }
+
+    if(htmlContent){
+      bodyList.push({
+        content: htmlContent,
+        isHtml: true
+      });
+    }
+
+    parsedChars += '<html-include></html-include>'.length + fileName.length;
+
+    console.log("-->", parsedChars , '<html-include></html-include>'.length , fileName.length )
+
     return recParser(rest.slice(parsedChars), bodyList);
   }
-  if (!body || !body.includes('<html-block>')) { return [{ content: body, type: 'text' }]; }
+
+  if (!body || !body.includes('<html-include>')) {
+    return [{ content: body, type: 'text' }];
+  }
+
   return recParser(body, []);
 }
 
@@ -94,7 +128,6 @@ router.param('post', function(req, res, next, post) {
         if (req.post && req.post.fields) {
           req.post.fields.bodyList = parseBodyObject(req.post.fields.body);
         }
-
         next();
       }
     )

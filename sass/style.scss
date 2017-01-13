@@ -8,10 +8,10 @@
 @import "base/i-breakpoints";
 
 @import "base/normalize";
-@import "base/a11y";
-
 @import "base/boilerplate";
 
+@import "base/a11y";
+@import "base/a11y-components";
 
 /* HELPERS
    ========================================================================== */
@@ -31,13 +31,19 @@
    ==========================================================================
 	TODO: This might be a reason to use CSSit, so that we get the latest and gratest icons
  */
-@import "base/icons";
+// @import "base/icons";
 
 
 /* FEATURES
    ========================================================================== */
+@import "features/style-guide-button";
 @import "features/menu";
 @import "features/post";
 @import "features/markdown";
 @import "features/highlighter";
 @import "features/footer";
+
+/* CONTENT
+   ========================================================================== */
+
+@import "content/autocomplete";

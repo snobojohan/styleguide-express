@@ -1,0 +1,82 @@
+// @import "a11y-accesskeys";
+@import "_a11y-form";
+// @import "a11y-globalheader";
+// @import "a11y-localheader";
+// @import "a11y-autocomplete";
+
+%a11y-focus-outline {
+	&:focus {
+		outline: 2px solid $svtse_color-yellow;
+		outline-offset: 2px;
+	}
+}
+
+%a11y-focus-outline--zero {
+	&:focus {
+		outline: 2px solid $svtse_color-yellow;
+	}
+}
+
+%a11y-focus-outline--minus {
+	&:focus {
+		outline: 2px solid $svtse_color-yellow;
+		outline-offset: -2px;
+	}
+}
+
+%a11y__hide-visibly,
+.a11y__hide-visibly {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.a11y__hide {
+	display: none;
+}
+
+.a11y__show {
+	display: block;
+}
+
+%a11y__button {
+	color: $svtse_color-white;
+	background-color: transparent;
+	margin-top: 0;
+	border: 2px solid transparent;
+
+	&:hover {
+		background-color: $svtse_color-dark-blue;
+		color: $svtse_color-white;
+	}
+
+	&:focus {
+		border-color: $svtse_color-yellow;
+	}
+
+	&:active {
+		background-color: $svtse_color-grey-10prc;
+		color: $svtse_color-black;
+	}
+}
+
+.a11y__button--default {
+	@extend %a11y__button;
+	@extend %style-guide_button-default;
+}
+
+.a11y__button--icon {
+	@extend %a11y__button;
+	@extend %style-guide_button-circular;
+}
+
+.a11y {
+	overflow: visible;
+
+	* {
+		box-sizing: border-box !important;
+	}
+}
