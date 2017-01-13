@@ -57,6 +57,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
+app.use('/img',express.static(path.join(__dirname, 'public/images')));
+app.use('/js',express.static(path.join(__dirname, 'public/javascripts')));
+app.use('/assets',express.static(path.join(__dirname, 'public/assets')));
+// app.use('/css',express.static(path.join(__dirname, 'public')));
+
 app.use(sassMiddleware({
     /* Options */
     src: path.join(__dirname, 'sass'),
@@ -65,11 +70,9 @@ app.use(sassMiddleware({
     outputStyle: 'compressed'
 }));
 
-app.use('/img',express.static(path.join(__dirname, 'public/images')));
-app.use('/js',express.static(path.join(__dirname, 'public/javascripts')));
-app.use('/assets',express.static(path.join(__dirname, 'public/assets')));
-app.use('/css',express.static(path.join(__dirname, 'public')));
-
+app.use(
+    express.static(path.join(__dirname, 'public'))
+);
 
 //  Connect all our routes to our application
 app.use('/', routes);

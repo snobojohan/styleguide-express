@@ -4,7 +4,6 @@ var KEYCODE_ESC = 27;
 var KEYCODE_DOWN = 40;
 var KEYCODE_UP = 38;
 
-console.log("HELLO");
 
 var AutoComplete = {
 

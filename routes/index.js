@@ -57,8 +57,7 @@ function parseBodyObject(body) {
      text-block and an html-block. */
   function recParser(rest, bodyList) {
 
-    console.log("-------------------------------");
-    console.log("rest: ", rest);
+
 
     if (!rest || !rest.length) {
       return bodyList;
@@ -66,10 +65,6 @@ function parseBodyObject(body) {
 
     var parsedChars = 0;
     var splitted = rest.split('<html-include>', 2);
-
-    console.log('..................')
-    console.log(splitted)
-    console.log('..................')
 
     bodyList.push({
       content: splitted[0]
@@ -99,8 +94,6 @@ function parseBodyObject(body) {
     }
 
     parsedChars += '<html-include></html-include>'.length + fileName.length;
-
-    console.log("-->", parsedChars , '<html-include></html-include>'.length , fileName.length )
 
     return recParser(rest.slice(parsedChars), bodyList);
   }
